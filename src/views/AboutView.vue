@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="container " class="h-[100vh] w-[100vw]">
 
 
     <div class="bg-white rounded-lg shadow sm:max-w-3xl sm:w-full sm:mx-auto sm:overflow-hidden">
@@ -23,34 +23,35 @@
                 <p>Dia de Vencimento da fatura (Pagamento em até 40 dias):</p>
                 <select type="text" id="ValidadeDaFatura"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="Your price" >
-                  <option value="">Dia 5</option>
-                  <option value="">Dia 10</option>
-                  <option value="">Dia 15</option>
-                  <option value="">Dia 20</option>
-                  <option value="">Dia 25</option>
+                  placeholder="Your price" v-model="DIA">
+                  <option value="">Selecione o dia de vencimento</option>
+                  <option value="5">Dia 5</option>
+                  <option value="10">Dia 10</option>
+                  <option value="15">Dia 15</option>
+                  <option value="20">Dia 20</option>
+                  <option value="25">Dia 25</option>
                 </select>
               </div>
             </div>
 
             <div class="w-full">
               <div class=" relative ">
-                <input type="text" id="cpf"
+                <input v-model="CPF" type="number" id="cpf"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="CPF" />
               </div>
             </div>
             <div class="w-full">
               <div class=" relative">
-                <input type="text" id="nome"
+                <input v-model="NOME" type="text" id="nome"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="Nome" />
+                  placeholder="Nome Completo" />
               </div>
             </div>
 
             <div class="w-full">
               <div class=" relative ">
-                <input type="text" id="rg"
+                <input v-model="RG" type="number" id="rg"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="RG" />
               </div>
@@ -59,7 +60,7 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <input type="text" id="UF_RG"
+                <input v-model="UF_RG" type="text" id="UF_RG"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="UF RG" />
               </div>
@@ -67,7 +68,7 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <input type="text" id="DataDeNascimento"
+                <input v-model="Data_de_Nascimento" type="number" id="DataDeNascimento"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Data de Nascimento" />
               </div>
@@ -75,7 +76,7 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <input type="text" id="Sexo"
+                <input v-model="SEXO" type="text" id="Sexo"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Sexo" />
               </div>
@@ -83,23 +84,37 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <input type="text" id="Escolaridade"
+                <input v-model="ESCOLARIDADE" type="text" id="Escolaridade"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Escolaridade" />
               </div>
             </div>
 
-            <div class="w-full">
-              <div class=" relative ">
-                <input type="text" id="Celular"
-                  class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="Celular" />
+            <div class="flex w-full mb-2">
+
+              <div class="w-24">
+                <div class=" relative ">
+                  <select type="number" id="Celular"
+                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    placeholder="Celular" v-model="DDD">
+                    <option value="55">+55</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="w-full">
+                <div class=" relative ">
+                  <input v-model="CELULAR" type="number" id="Celular"
+                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    placeholder="Celular" />
+                </div>
               </div>
             </div>
 
+
             <div class="w-full">
               <div class=" relative ">
-                <input type="text" id="Telefone"
+                <input v-model="TELEFONE" type="number" id="Telefone"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Telefone (Opcional)" />
               </div>
@@ -107,7 +122,7 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <input type="text" id="email"
+                <input v-model="EMAIL" type="email" id="email"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Endereço de Email" />
               </div>
@@ -117,7 +132,7 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <input type="text" id="cep"
+                <input v-model="CEP" type="number" id="cep"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="CEP" />
               </div>
@@ -125,7 +140,7 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <input type="text" id="rua"
+                <input v-model="RUA" type="text" id="rua"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Rua" />
               </div>
@@ -133,7 +148,7 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <input type="text" id="numero"
+                <input v-model="NUMERO" type="number" id="numero"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Número" />
               </div>
@@ -141,7 +156,7 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <input type="text" id="complemento"
+                <input v-model="COMPLEMENTO" type="text" id="complemento"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Complemento (Opcional)" />
               </div>
@@ -149,7 +164,7 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <input type="text" id="bairro"
+                <input v-model="BAIRRO" type="text" id="bairro"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Bairro" />
               </div>
@@ -157,7 +172,7 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <input type="text" id="cidade"
+                <input v-model="CIDADE" type="text" id="cidade"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Cidade" />
               </div>
@@ -165,36 +180,90 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <input type="text" id="estado"
+                <input v-model="ESTADO" type="text" id="estado"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Estado" />
               </div>
             </div>
+          </div>
 
 
 
-            <div>
-              <span class="block w-full rounded-md shadow-sm">
-                <button type="button"
-                  class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-                  Enviar
-                </button>
-              </span>
-            </div>
+          <div>
+            <span class="block w-full rounded-md shadow-sm">
+              <button @click.prevent="enviarDados" type="button"
+                class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                Enviar
+              </button>
+            </span>
           </div>
         </div>
       </div>
-      <div class="px-4 py-6 border-t-2 border-gray-200 bg-gray-50 sm:px-10">
-        <p class="text-xs leading-5 text-gray-500">
-          
-        </p>
-      </div>
     </div>
+    <div class="px-4 py-6 border-t-2 border-gray-200 bg-gray-50 sm:px-10">
+      <p class="text-xs leading-5 text-gray-500">
 
-
-
-
-</div></template>
+      </p>
+    </div>
+  </div>
+</template>
 
 <script setup>
+import BuilderClass from '../components/Modules/builder'
+import cartao from '../components/Modules/cartao'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const DIA = ref()
+const CPF = ref()
+const RG = ref()
+const NOME = ref()
+const UF_RG = ref()
+const Data_de_Nascimento = ref()
+const SEXO = ref()
+const ESCOLARIDADE = ref()
+const DDD = ref()
+const CELULAR = ref()
+const TELEFONE = ref()
+const EMAIL = ref()
+const CEP = ref()
+const RUA = ref()
+const NUMERO = ref()
+const COMPLEMENTO = ref('')
+const BAIRRO = ref()
+const CIDADE = ref()
+const ESTADO = ref()
+
+
+
+const router = useRouter()
+
+
+
+
+const enviarDados = () => {
+
+  console.log(DIA.value)
+  const DATA = new BuilderClass(DIA.value, CPF.value, RG.value, NOME.value, Data_de_Nascimento.value, SEXO.value,
+    ESCOLARIDADE.value, DDD.value, CELULAR.value, TELEFONE.value, EMAIL.value, CEP.value, RUA.value, NUMERO.value, COMPLEMENTO.value,
+    BAIRRO.value, CIDADE.value, ESTADO.value, UF_RG.value)
+
+
+
+
+  cartao.enviarCartaoApi(DATA).then(() => {
+    router.push('/verify')
+  }).catch((err) => {
+    
+    console.log('algo deu errado' + err)
+  
+  })
+}
+
+
+
+
+
+
 </script>
+<style scoped></style>

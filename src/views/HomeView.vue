@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <img src="../assets/CartaoPro.png" class="w-[100vw] h-[70vw] mt-0"/>
     
-  </div>
+  
 </template>
 
 <script setup>
@@ -13,6 +13,9 @@
 
 <style scoped>
 
+div{
+  background-image: url('../assets/CartaoPro.png');
+}
 
 
 </style>

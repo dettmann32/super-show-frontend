@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <header class="h-32">
+        <header class="h-32 -mb-12">
             <nav class="flex justify-center sm:justify-between bg-red-500 h-20 items-center">
 
                 <div class="hidden sm:block">
