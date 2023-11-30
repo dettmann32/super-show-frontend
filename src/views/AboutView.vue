@@ -1,5 +1,6 @@
 <template>
-  <div id="container " class=" w-[100vw] flex justify-center items-center">
+  <div id="container " class=" w-[100vw] flex justify-center items-center bg-no-repeat bg-cover bg-fixed"
+    style="background-image: url('https://img.freepik.com/fotos-gratis/retrato-de-trabalhador-de-supermercado-parado-perto-do-freezer-com-comida_342744-1072.jpg?size=626&ext=jpg&uid=R47467877&ga=GA1.1.467504390.1697735833&semt=sph');">
 
 
     <div class="bg-gray-300 rounded-lg shadow sm:max-w-3xl sm:w-full  sm:overflow-hidden  my-10">
@@ -10,7 +11,7 @@
             </div>
           </div>
           <div class="relative flex justify-center text-sm leading-5">
-            <span class="px-2 text-gray-500 bg-white">
+            <span >
               Preencha suas informações
             </span>
           </div>
@@ -20,11 +21,12 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <p>Dia de Vencimento da fatura (Pagamento em até 40 dias):</p>
+                <p>Dia de Vencimento da fatura:</p>
+                <p class="text-right">Dia bom {{ diaBom }}</p>
+
                 <select type="text" id="ValidadeDaFatura"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Your price" v-model="DIA">
-                  <option value="">Selecione o dia de vencimento</option>
                   <option value="5">Dia 5</option>
                   <option value="10">Dia 10</option>
                   <option value="15">Dia 15</option>
@@ -36,7 +38,7 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <input v-model="CPF" type="number" id="cpf"
+                <input v-model="CPF" type="text" id="cpf"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="CPF" />
               </div>
@@ -200,21 +202,17 @@
         </div>
       </div>
     </div>
-    <div class="px-4 py-6 border-t-2 border-gray-200 bg-gray-50 sm:px-10">
-      <p class="text-xs leading-5 text-gray-500">
 
-      </p>
-    </div>
   </div>
 </template>
 
 <script setup>
 import BuilderClass from '../components/Modules/builder'
 import cartao from '../components/Modules/cartao'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
-const DIA = ref()
+const DIA = ref(0)
 const CPF = ref()
 const RG = ref()
 const NOME = ref()
@@ -235,6 +233,28 @@ const CIDADE = ref()
 const ESTADO = ref()
 
 
+let diaBom = ref('')
+
+
+function dia(DIA) {
+
+  if (DIA == 5) {
+    diaBom.value = '22'
+  } else if (DIA == 10) {
+    diaBom.value = '27'
+  } else if (DIA == 15) {
+    diaBom.value = '01'
+  } else if (DIA == 20) {
+    diaBom.value = '06'
+  } else if (DIA == 25) {
+    diaBom.value = '11'
+  } else {
+    diaBom.value = 'Dia Bom'
+  }
+}
+watch(DIA, () => dia(DIA.value))
+
+
 
 const router = useRouter()
 
@@ -243,7 +263,7 @@ const router = useRouter()
 
 const enviarDados = () => {
 
-  console.log(DIA.value)
+
   const DATA = new BuilderClass(DIA.value, CPF.value, RG.value, NOME.value, Data_de_Nascimento.value, SEXO.value,
     ESCOLARIDADE.value, DDD.value, CELULAR.value, TELEFONE.value, EMAIL.value, CEP.value, RUA.value, NUMERO.value, COMPLEMENTO.value,
     BAIRRO.value, CIDADE.value, ESTADO.value, UF_RG.value)
@@ -251,19 +271,15 @@ const enviarDados = () => {
 
 
 
-  cartao.enviarCartaoApi(DATA).then(() => {
-    router.push('/verify')
-  }).catch((err) => {
+  cartao.enviarCartaoApi(DATA, router)
 
-    console.log('algo deu errado' + err)
 
-  })
+
+
+
+
+
 }
-
-
-
-
-
 
 </script>
 <style scoped></style>

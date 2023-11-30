@@ -7,6 +7,8 @@
     <div>
       <router-view/>
     </div>
+
+    <FooterCompo></FooterCompo>
     
   </div>
   
@@ -15,10 +17,14 @@
 
 <script setup>  
 import NavBar from './components/NavBar.vue';
+import FooterCompo from './components/FooterCompo.vue';
 </script>
 
 
 <style>
+body{
+  overflow-x: hidden;
+}
 
 
 </style>

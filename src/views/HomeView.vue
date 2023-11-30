@@ -1,5 +1,5 @@
 <template>
-  <img src="../assets/CartaoPro.png" class="w-[100vw] h-[70vw] mt-0"/>
+  <img src="../assets/CartaoPro.png" class="w-[100vw] h-[40vw] mt-0 bg-cover"/>
     
   
 </template>

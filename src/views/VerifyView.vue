@@ -21,22 +21,15 @@
                             </span>
                             <input v-model="code" type="number" id="sign-in-email"
                                 class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                placeholder="Your email" />
+                                placeholder="Seu codigo" />
                         </div>
                     </div>
 
-                    <div class="flex items-center mb-6 -mt-4">
-                        <div class="flex ml-auto">
-                            <a href="#"
-                                class="inline-flex text-xs font-thin text-gray-500 sm:text-sm dark:text-gray-100 hover:text-gray-700 dark:hover:text-white">
-                                Forgot Your Password?
-                            </a>
-                        </div>
-                    </div>
+
                     <div class="flex w-full">
                         <button @click.prevent="enviarCodigo" type="submit"
                             class="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-                            Login
+                            Enviar
                         </button>
                     </div>
                 </form>
@@ -45,9 +38,43 @@
                 <a href="#" target="_blank"
                     class="inline-flex items-center text-xs font-thin text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white">
                     <span class="ml-2">
-                        You don&#x27;t have an account?
+                        <router-link to="/cadastro">Retornar ao formulario de cadastro</router-link>
                     </span>
                 </a>
+            </div>
+        </div>
+
+
+        <div class="absolute flex justify-center" :style="{ transform: `translateX(${translate}px)` }" id="messageErr">
+            <div
+                class="flex flex-col gap-y-20 w-full px-4 py-4 mt-6 bg-white rounded-lg shadow-lg sm:w-1/2 md:w-1/2 min-h-[400px] sm:min-w-[500px]  dark:bg-gray-800">
+                <div class="">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center w-12 h-12 mx-auto">
+                            <img src="../assets//ErroIcon.png" alt="Error">
+                        </div>
+                    </div>
+                    <h3 class="py-4 text-2xl font-semibold text-gray-700 sm:text-xl dark:text-white text-center">
+                        ERRO
+                    </h3>
+                    <p class="py-4 text-gray-500 text-md dark:text-gray-300">
+                        Algo deu errado, tente novamente e certifique-se que todos os dados forma preenchidos
+                    </p>
+                </div>
+
+
+                <div>
+                    <router-link to="/">
+
+                        <button type="button"
+                            class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                            Voltar
+                        </button>
+
+                    </router-link>
+                </div>
+
+
             </div>
         </div>
 
@@ -59,27 +86,38 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios'
+import CardErr from '../components/Modules/cardERR'
 
 const code = ref()
 
 const data = ref({ code: null })
 
 
+let translate = ref(10000)
+
+
+
+
 async function enviarCodigo() {
     data.code = code.value
     if (data.code === null | data.code == undefined) {
         //implementar sistema de cards
+
         console.log('Algo deu errado, preencha o campo obrigatorio')
     } else {
-        await axios.post('http://localhost:3333/autenticateUser', data).then(() => {
+        await axios.post('http://192.168.0.181:3333/autenticateUser', data).then((res) => {
 
             // isso abaixo deve ser removido posteriormente
             alert("Cadastro realizado com sucesso")
 
+
+
         }).catch((err) => {
 
-            //chamar card de erro
-            console.error('algo deu errado ao enviar dados' + err)
+            translate.value = CardErr.functionErro().open
+
+
+
         })
 
     }
@@ -93,3 +131,8 @@ async function enviarCodigo() {
 
 
 </script>
+
+<style> #messageErr {
+     transition: 0.5s;
+ }
+</style>
