@@ -51,18 +51,18 @@
                 <div class="">
                     <div class="flex-shrink-0">
                         <div class="flex items-center justify-center w-12 h-12 mx-auto">
-                            <img src="../assets//ErroIcon.png" alt="Error">
+                            <img :src="img" alt="Error">
                         </div>
                     </div>
                     <h3 class="py-4 text-2xl font-semibold text-gray-700 sm:text-xl dark:text-white text-center">
-                        ERRO
+                        {{title}}
                     </h3>
                     <p class="py-4 text-gray-500 text-md dark:text-gray-300">
-                        Algo deu errado, tente novamente e certifique-se que todos os dados forma preenchidos
+                        {{ response }}
                     </p>
                 </div>
 
-
+                
                 <div>
                     <router-link to="/">
 
@@ -96,6 +96,13 @@ const data = ref({ code: null })
 let translate = ref(10000)
 
 
+let response = ref()
+
+let title = ref()
+
+let img = ref()
+
+
 
 
 async function enviarCodigo() {
@@ -107,8 +114,16 @@ async function enviarCodigo() {
     } else {
         await axios.post('http://192.168.0.181:3333/autenticateUser', data).then((res) => {
 
-            // isso abaixo deve ser removido posteriormente
-            alert("Cadastro realizado com sucesso")
+           
+
+            response.value = res.data.message 
+
+            title.value = "Cadastro concluido" 
+
+            translate.value = 0
+
+            img.value = "../assets//sucesso.png"
+
 
 
 
@@ -116,6 +131,10 @@ async function enviarCodigo() {
 
             translate.value = CardErr.functionErro().open
 
+            title.value = 'ERRO'
+            response.value = 'Algo deu errado ao conectar-se com o servidor ! Tente novamente mais tarde'
+
+            img.value = "../assets//ErroIcon.png"
 
 
         })
