@@ -1,6 +1,6 @@
 <template>
-    <div id="container " class=" w-[100vw] flex justify-center items-center bg-no-repeat bg-cover bg-fixed flex-col"
-        style="background-image: url('https://img.freepik.com/fotos-gratis/retrato-de-trabalhador-de-supermercado-parado-perto-do-freezer-com-comida_342744-1072.jpg?size=626&ext=jpg&uid=R47467877&ga=GA1.1.467504390.1697735833&semt=sph');">
+    <div id="container " class=" w-[100vw] flex justify-center items-center bg-no-repeat bg-cover bg-fixed flex-col h-full"
+        style= "background-image: url('https://dettmann32.github.io/imagens-for-supershow-web-site/imagens/Cartao.jpg');">
 
 
         <div class="bg-gray-300 rounded-lg shadow sm:max-w-3xl sm:w-full  sm:overflow-hidden  my-10" v-for="c in client"
@@ -15,10 +15,15 @@
                         <div class="w-full border-t border-gray-300">
                         </div>
                     </div>
-                    <div class="relative flex justify-center text-md leading-5">
-                        <span>
+                    <div class="relative flex justify-around  leading-5">
+                        <div class="text-xl">
                             {{ c.NOME }}
-                        </span>
+                        </div>
+
+                        <div class="text-sm">
+                            Codigo do cliente: {{ c.id }}
+                        </div>
+
                     </div>
                 </div>
                 <div class="mt-6">
@@ -229,18 +234,18 @@
 
                         </div>
 
-                        <div>
+                         <div>
 
-                            <router-link to="/message"> <button
+                             <button @click.prevent="Message(c)"
                                 class=" py-2 px-4 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none">
                                 Mensagem
-                            </button></router-link>
+                            </button> 
 
                         </div>
                     </div>
 
 
-                    <div class="fixed w-full h-full m-auto" :style="`transform:translateY(-${translate}px); transition: 1s`">
+                    <div class="fixed w-full h-full m-auto zindex" :style="`transform:translateY(-${translate}px); transition: 1s`">
 
                         <div
                             class="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow  sm:px-6 md:px-8 lg:px-10">
@@ -262,7 +267,7 @@
                                             </span>
                                             <input type="text" id="sign-in-email" v-model="motivo"
                                                 class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                                placeholder="Your email" />
+                                                placeholder="Mensagem que sera enviada para o cliente descrevendo o motivo" />
                                         </div>
                                     </div>
                                   
@@ -271,6 +276,13 @@
                                         <button type="submit" @click.prevent="RegeitarCadastro(c)"
                                             class="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                                             Enviar 
+                                        </button>
+                                    </div>
+
+                                    <div>
+                                        <button type="submit" @click.prevent="CancelarRegeicao()"
+                                            class="py-2 px-4 mt-2  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                            Cancela 
                                         </button>
                                     </div>
                                 </form>
@@ -293,10 +305,17 @@ import axios from 'axios'
 import concluirCadastro from '../components/Modules/concluirCadastro'
 import { ref } from 'vue'
 import Regeitar from "../components/Modules/regeitarCadastro"
+import { Commit } from 'vuex'
+import {useStore} from 'vuex'
+import { useRouter } from 'vue-router';
 
 let client = ref()
 let motivo = ref()
-let translate = ref(3000)
+let translate = ref(0)
+
+
+
+const router = useRouter()
 
 
 async function fetchData() {
@@ -308,10 +327,12 @@ async function fetchData() {
         console.log('Algo deu errado ao listar usuarios ' + err)
     }
 }
+fetchData()
 
 function ConcluirCadastro(c) {
     try {
 
+        console.log()
         concluirCadastro.Concluir(c)
 
         
@@ -322,13 +343,19 @@ function ConcluirCadastro(c) {
 
 
     } catch (err) {
-
+        console.log(err)
     }
 
 }
 
 function menuRegect() {
+   
     translate.value = 1800
+    
+}
+
+function CancelarRegeicao(){
+    translate.value=0
 }
 
 
@@ -337,7 +364,7 @@ function RegeitarCadastro(c) {
 
     Regeitar.Regect(c, motivo.value)
 
-    translate.value = 3000
+    translate.value = 0
 
     setTimeout(fetchData, 500)
 
@@ -346,5 +373,31 @@ function RegeitarCadastro(c) {
 
 
 
-fetchData()
+
+
+const store = useStore()
+
+async function Message(c){
+
+    
+    const user = c.NOME
+    const email = c.EMAIL
+    await store.commit('setUserEmail', {user, email})
+
+    router.push('/message')
+    
+
+
+
+}
+
+
 </script>
+
+<style scoped>
+
+.zindex{
+ z-index: 1;
+}
+
+</style>

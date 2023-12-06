@@ -9,8 +9,8 @@ class Concluido{
         
         await axios.post('http://192.168.0.181:3333/adm/CartaoConcluido',data).then((res)=>{
 
-            console.log(data.EMAIL)
-            alert(res) 
+            
+            alert(res.data.message) 
 
         }).catch((err)=>{
             console.log(err)

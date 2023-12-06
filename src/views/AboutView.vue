@@ -1,6 +1,6 @@
 <template>
   <div id="container " class=" w-[100vw] flex justify-center items-center bg-no-repeat bg-cover bg-fixed"
-    style="background-image: url('https://img.freepik.com/fotos-gratis/retrato-de-trabalhador-de-supermercado-parado-perto-do-freezer-com-comida_342744-1072.jpg?size=626&ext=jpg&uid=R47467877&ga=GA1.1.467504390.1697735833&semt=sph');">
+    style="background-image: url('https://dettmann32.github.io/imagens-for-supershow-web-site/imagens/Cartao.jpg');">
 
 
     <div class="bg-gray-300 rounded-lg shadow sm:max-w-3xl sm:w-full  sm:overflow-hidden  my-10">
