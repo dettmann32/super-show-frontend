@@ -75,22 +75,26 @@
 
             </div>
 
+            <div class="flex w-full mb-2">
 
-            <div class="w-full">
-              <div class=" relative ">
-                <input v-model="Data_de_Nascimento" type="number" id="DataDeNascimento"
-                  class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="Data de Nascimento" />
+
+              <div class="w-full mr-2">
+                <div class=" relative ">
+                  <input v-model="Data_de_Nascimento" type="number" id="DataDeNascimento"
+                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    placeholder="Data de Nascimento" />
+                </div>
+              </div>
+
+              <div class="w-full">
+                <div class=" relative ">
+                  <input v-model="SEXO" type="text" id="Sexo"
+                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    placeholder="Sexo" />
+                </div>
               </div>
             </div>
 
-            <div class="w-full">
-              <div class=" relative ">
-                <input v-model="SEXO" type="text" id="Sexo"
-                  class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="Sexo" />
-              </div>
-            </div>
 
             <div class="w-full">
               <div class=" relative ">
@@ -149,21 +153,27 @@
               </div>
             </div>
 
-            <div class="w-full">
-              <div class=" relative ">
-                <input v-model="RUA" type="text" id="rua"
-                  class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="Rua" />
+            <div class="flex w-full mb-2">
+
+              <div class="w-full mr-2">
+                <div class=" relative ">
+                  <input v-model="RUA" type="text" id="rua"
+                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    placeholder="Rua" />
+                </div>
               </div>
+
+              <div class="w-full">
+                <div class=" relative ">
+                  <input v-model="NUMERO" type="number" id="numero"
+                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    placeholder="Número da casa (ou 00)" />
+                </div>
+              </div>
+
+
             </div>
 
-            <div class="w-full">
-              <div class=" relative ">
-                <input v-model="NUMERO" type="number" id="numero"
-                  class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="Número (ou 00)" />
-              </div>
-            </div>
 
             <div class="w-full">
               <div class=" relative ">
