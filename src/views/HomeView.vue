@@ -1,9 +1,13 @@
 <template>
   <router-link to="/cadastro">
-    <div class="h-[80vh]">
+    <div class="">
+      <picture class="w-[100vw] sm:h-[30vw] ">
 
-      <img src="../assets/Cartao.jpg" class="w-[100vw] h-[40vw] mt-0 bg-cover bg-center mb-0" />
+        <source media="(max-width: 768px)" srcset="../assets/CataroVertical.png" class="w-full h-full">
+        <img src="../assets/Cartao.jpg" class="w-[100vw]  mt-0  mb-0" />
 
+      </picture>
+      
 
 
 
@@ -19,7 +23,5 @@
 </script>
 
 <style scoped>
-div {
-  background-image: url('../assets/Cartao.png');
-}
+
 </style>

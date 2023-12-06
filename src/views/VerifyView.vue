@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-[90vh] flex justify-center items-center">
+    <div class="w-full h-[70vh] flex justify-center items-center overflow-hidden">
 
         <div
             class="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
@@ -26,7 +26,7 @@
                     </div>
 
 
-                    <div class="flex w-full">
+                    <div class="flex w-full" ref="formContainer">
                         <button @click.prevent="enviarCodigo" type="submit"
                             class="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                             Enviar
@@ -45,7 +45,7 @@
         </div>
 
 
-        <div class="absolute flex justify-center" :style="{ transform: `translateX(${translate}px)` }" id="messageErr">
+        <div class="absolute flex justify-center" :style="{ transform: `translateX(-${translate}px)` }" id="messageErr">
             <div
                 class="flex flex-col gap-y-20 w-full px-4 py-4 mt-6 bg-white rounded-lg shadow-lg sm:w-1/2 md:w-1/2 min-h-[400px] sm:min-w-[500px]  dark:bg-gray-800">
                 <div class="">
@@ -55,14 +55,14 @@
                         </div>
                     </div>
                     <h3 class="py-4 text-2xl font-semibold text-gray-700 sm:text-xl dark:text-white text-center">
-                        {{title}}
+                        {{ title }}
                     </h3>
                     <p class="py-4 text-gray-500 text-md dark:text-gray-300">
                         {{ response }}
                     </p>
                 </div>
 
-                
+
                 <div>
                     <router-link to="/">
 
@@ -84,7 +84,7 @@
 
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import axios from 'axios'
 import CardErr from '../components/Modules/cardERR'
 
@@ -92,15 +92,16 @@ const code = ref()
 
 const data = ref({ code: null })
 
-
 let translate = ref(10000)
-
 
 let response = ref()
 
 let title = ref()
 
 let img = ref()
+
+
+const formContainer = ref(null);
 
 
 
@@ -114,11 +115,11 @@ async function enviarCodigo() {
     } else {
         await axios.post('http://192.168.0.181:3333/autenticateUser', data).then((res) => {
 
-           
 
-            response.value = res.data.message 
 
-            title.value = "Cadastro concluido" 
+            response.value = res.data.message
+
+            title.value = "Cadastro concluido"
 
             translate.value = 0
 
@@ -145,8 +146,13 @@ async function enviarCodigo() {
 
 
 
-
-
+onMounted(() => {
+    formContainer.value.addEventListener('keyup', (event) => {
+        if (event.key === 'Enter') {
+            enviarCodigo();
+        }
+    });
+});
 
 
 </script>

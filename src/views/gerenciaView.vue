@@ -229,7 +229,7 @@
                             <button type="button" @click.prevent="menuRegect()"
                                 class="py-2 px-4 flex justify-center items-center  bg-red-700 hover:bg-red-800 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                                 <img src="../assets//ErroIcon.png" alt="reject" class="h-[20px] w-[20px] mr-2">
-                                Regeitar
+                                Rejeitar
                             </button>
 
                         </div>

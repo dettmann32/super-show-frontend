@@ -11,7 +11,7 @@
             </div>
           </div>
           <div class="relative flex justify-center text-sm leading-5">
-            <span >
+            <span>
               Preencha suas informações
             </span>
           </div>
@@ -51,22 +51,30 @@
               </div>
             </div>
 
-            <div class="w-full">
-              <div class=" relative ">
-                <input v-model="RG" type="number" id="rg"
-                  class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="RG" />
-              </div>
-            </div>
+            <div class="flex">
 
 
-            <div class="w-full">
-              <div class=" relative ">
-                <input v-model="UF_RG" type="text" id="UF_RG"
-                  class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="UF RG" />
+              <div class="w-full mr-2">
+                <div class=" relative ">
+                  <input v-model="RG" type="number" id="rg"
+                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    placeholder="RG" />
+                </div>
               </div>
+
+
+              <div class="w-full">
+                <div class=" relative ">
+                  <input v-model="UF_RG" type="text" id="UF_RG"
+                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    placeholder="UF RG" />
+                </div>
+              </div>
+
+
+
             </div>
+
 
             <div class="w-full">
               <div class=" relative ">
@@ -98,8 +106,9 @@
                 <div class=" relative ">
                   <select type="number" id="Celular"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4  bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    placeholder="Celular" v-model="DDD">
-                    <option value="55">+55</option>
+                    placeholder="DDD" v-model="DDD">
+                    <option value="27">27</option>
+                    <option value="027">027</option>
                   </select>
                 </div>
               </div>
@@ -152,7 +161,7 @@
               <div class=" relative ">
                 <input v-model="NUMERO" type="number" id="numero"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="Número" />
+                  placeholder="Número (ou 00)" />
               </div>
             </div>
 
@@ -191,7 +200,7 @@
 
 
 
-          <div class="mt-5">
+          <div class="mt-5" ref="formContainer">
             <span class="block w-full rounded-md shadow-sm">
               <button @click.prevent="enviarDados" type="button"
                 class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
@@ -209,7 +218,7 @@
 <script setup>
 import BuilderClass from '../components/Modules/builder'
 import cartao from '../components/Modules/cartao'
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const DIA = ref(0)
@@ -258,7 +267,7 @@ watch(DIA, () => dia(DIA.value))
 
 const router = useRouter()
 
-
+const formContainer = ref(null)
 
 
 const enviarDados = () => {
@@ -269,17 +278,18 @@ const enviarDados = () => {
     BAIRRO.value, CIDADE.value, ESTADO.value, UF_RG.value)
 
 
-
-
   cartao.enviarCartaoApi(DATA, router)
 
-
-
-
-
-
-
 }
+
+onMounted(() => {
+  formContainer.value.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+      enviarDados();
+    }
+  });
+});
+
 
 </script>
 <style scoped></style>

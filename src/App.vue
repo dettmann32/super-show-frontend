@@ -1,12 +1,13 @@
 <template>
   
-  <div>
-    <div>
+  <div class="overflow-hidden">
+    
       <NavBar></NavBar>
-    </div>
-    <div>
+   
+    
       <router-view/>
-    </div>
+  
+
 
     <FooterCompo></FooterCompo>
     
