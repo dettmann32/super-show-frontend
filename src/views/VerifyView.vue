@@ -123,7 +123,7 @@ async function enviarCodigo() {
 
             translate.value = 0
 
-            img.value = "../assets//sucesso.png"
+            img.value = "https://dettmann32.github.io/imagens-for-supershow-web-site/imagens/sucesso.png"
 
 
 
@@ -135,7 +135,7 @@ async function enviarCodigo() {
             title.value = 'ERRO'
             response.value = 'Algo deu errado ao conectar-se com o servidor ! Tente novamente mais tarde'
 
-            img.value = "../assets//ErroIcon.png"
+            img.value = "https://dettmann32.github.io/imagens-for-supershow-web-site/imagens/ErroIcon.png"
 
 
         })
