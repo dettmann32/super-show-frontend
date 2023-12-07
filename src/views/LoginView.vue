@@ -72,7 +72,11 @@ async function LoginUser(){
     await axios.post('http://192.168.0.181:3333/adm/login', {nome:user.value, password: password.value}).then((res)=>{
 
         if(res.data.message === "1"){
+
+            document.cookie = res.data.token
+            
             router.push('/gerenciamento')
+            
         }else{
             alert(res.data.message)
         }

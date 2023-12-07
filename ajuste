@@ -1,0 +1,71 @@
+[33mcommit 9116a3fb60b1819abbe18e48231511189d90bd88[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: dettmann32 <136387394+dettmann32@users.noreply.github.com>
+Date:   Wed Dec 6 16:52:09 2023 -0300
+
+    ajustes
+
+[33mcommit 9811a303a8d0f434a563fd290d1cee1eb001abc2[m
+Author: dettmann32 <136387394+dettmann32@users.noreply.github.com>
+Date:   Wed Dec 6 14:38:12 2023 -0300
+
+    correções
+
+[33mcommit 5bb43cebd90109906e3ff6e21f06b693f9090f4b[m
+Author: dettmann32 <136387394+dettmann32@users.noreply.github.com>
+Date:   Wed Dec 6 14:25:22 2023 -0300
+
+    versão beta
+
+[33mcommit c50b1039f57d8c09137ed7490e66459d93f7a53f[m
+Author: dettmann32 <136387394+dettmann32@users.noreply.github.com>
+Date:   Wed Dec 6 12:48:44 2023 -0300
+
+    quase pronto, apenas ajustes e parte estetica
+
+[33mcommit d295fd40b0e3bde82cba9bc0c6091435c9274bb8[m
+Author: dettmann32 <136387394+dettmann32@users.noreply.github.com>
+Date:   Mon Dec 4 16:59:06 2023 -0300
+
+    implementação das mensagens de rejeição de cadastro e de conclusão de cadastro
+
+[33mcommit 2a07c35c98477c251b28311f9ea2990068f45aa6[m
+Author: dettmann32 <136387394+dettmann32@users.noreply.github.com>
+Date:   Fri Dec 1 17:14:14 2023 -0300
+
+    rota de gerenciamento
+
+[33mcommit fb4d987ddc0a8892bb513af7a53aac7b6257057c[m
+Author: dettmann32 <136387394+dettmann32@users.noreply.github.com>
+Date:   Thu Nov 30 16:21:50 2023 -0300
+
+    da parte de clientes, só falta dar uns retorques no design e fazer o card de sucesso
+
+[33mcommit d3de46070b550794825aa4ff5987548052be2ddc[m
+Author: dettmann32 <136387394+dettmann32@users.noreply.github.com>
+Date:   Thu Nov 30 13:02:24 2023 -0300
+
+    não sei oque mudou
+
+[33mcommit d94bace35b5b7868c6fdbfed192e39dd451171aa[m
+Author: dettmann32 <136387394+dettmann32@users.noreply.github.com>
+Date:   Wed Nov 29 16:50:10 2023 -0300
+
+    Emplementei o sistema de cadastro no front end, penso que posso dizer que estou em uma versão alpha da parte dos clientes, falta ainda programar os cards
+
+[33mcommit ec36ce19892afe8af121eacc7316550acdf6c7a1[m
+Author: dettmann32 <136387394+dettmann32@users.noreply.github.com>
+Date:   Tue Nov 28 16:56:13 2023 -0300
+
+    Html do formulario pronto
+
+[33mcommit 9c8ad1808204b0721d9eb04f092d620872006571[m
+Author: dettmann32 <136387394+dettmann32@users.noreply.github.com>
+Date:   Tue Nov 28 15:11:19 2023 -0300
+
+    first commit
+
+[33mcommit ff46b1b6b4936fe1ddbbeaa49549b3a6918a9ba6[m
+Author: dettmann32 <136387394+dettmann32@users.noreply.github.com>
+Date:   Tue Nov 28 14:53:31 2023 -0300
+
+    init

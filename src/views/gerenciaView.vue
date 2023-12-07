@@ -317,10 +317,16 @@ let translate = ref(0)
 
 const router = useRouter()
 
+const config = {
+ headers: {
+    'x-access-token': document.cookie,
+ },
+}
+
 
 async function fetchData() {
     try {
-        const response = await axios.get('http://192.168.0.181:3333/adm/clients')
+        const response = await axios.get('http://192.168.0.181:3333/adm/clients', config)
         client.value = response.data
 
     } catch (err) {

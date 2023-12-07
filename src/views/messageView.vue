@@ -59,6 +59,12 @@ const user = ref(store.state.User.user)
 
 console.log(email, user)
 
+const config = {
+ headers: {
+    'x-access-token': document.cookie,
+ },
+}
+
 
 
 async function sendMessage(){
@@ -67,7 +73,7 @@ async function sendMessage(){
     const mensagem = message.value
 
     const messageObj = ref([{subject:assunto},{message:mensagem},{email:email}])
-    await axios.post('http://192.168.0.181:3333/adm/Message',messageObj.value).then((response) => {
+    await axios.post('http://192.168.0.181:3333/adm/Message',messageObj.value, config).then((response) => {
 
     
         message.value = null

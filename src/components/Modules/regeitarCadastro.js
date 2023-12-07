@@ -1,6 +1,12 @@
 import axios from 'axios'
 
 
+const config = {
+    headers: {
+       'x-access-token': document.cookie,
+    },
+   }
+
 class Regeitar{
 
 
@@ -10,7 +16,7 @@ class Regeitar{
 
         console.log(AttData)
          
-        await axios.post('http://192.168.0.181:3333/adm/Rejeitado', AttData).then((res)=>{
+        await axios.post('http://192.168.0.181:3333/adm/Rejeitado', AttData, config).then((res)=>{
 
             
             alert(res) 
