@@ -305,7 +305,6 @@ import axios from 'axios'
 import concluirCadastro from '../components/Modules/concluirCadastro'
 import { ref } from 'vue'
 import Regeitar from "../components/Modules/regeitarCadastro"
-import { Commit } from 'vuex'
 import {useStore} from 'vuex'
 import { useRouter } from 'vue-router';
 
@@ -372,7 +371,9 @@ function RegeitarCadastro(c) {
 
     translate.value = 0
 
-    setTimeout(fetchData, 500)
+    setTimeout(fetchData, 800)
+
+    motivo.value = null 
 
 }
 
