@@ -1,4 +1,5 @@
 <template>
+    <nav-bar></nav-bar>
     <div class="w-full h-[70vh] flex justify-center items-center overflow-hidden">
 
         <div
@@ -87,6 +88,7 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios'
 import CardErr from '../components/Modules/cardERR'
+import NavBar from '@/components/NavBar.vue';
 
 const code = ref()
 

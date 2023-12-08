@@ -2,7 +2,7 @@
   
   <div class="overflow-hidden">
     
-      <NavBar></NavBar>
+      
    
     
       <router-view/>

@@ -1,4 +1,5 @@
 <template>
+  <NavBar></NavBar>
   <div id="container " class=" w-[100vw] flex justify-center items-center bg-no-repeat bg-cover bg-fixed"
     style="background-image: url('https://dettmann32.github.io/imagens-for-supershow-web-site/imagens/Cartao.jpg');">
 
@@ -226,6 +227,7 @@
 </template>
 
 <script setup>
+import NavBar from '@/components/NavBar.vue';
 import BuilderClass from '../components/Modules/builder'
 import cartao from '../components/Modules/cartao'
 import { ref, watch, onMounted } from 'vue'

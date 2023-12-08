@@ -1,4 +1,5 @@
 <template>
+  <nav-bar></nav-bar>
   <router-link to="/cadastro">
     <div class="">
       <picture class="w-[100vw] sm:h-[30vw]  ">
@@ -16,6 +17,8 @@
 </template>
 
 <script setup>
+import NavBar from '@/components/NavBar.vue';
+
 
 
 

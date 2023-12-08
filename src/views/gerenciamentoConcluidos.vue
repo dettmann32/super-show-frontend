@@ -113,7 +113,7 @@
 
 
 
-        <h1 class="text-center">Solicitados</h1>
+        <h1 class="text-center">Concluidos</h1>
         <div class="flex justify-center items-center mt-10 mb-10">
 
             <table border="1" class="border border-gray-500">
@@ -124,7 +124,7 @@
                     <th class="border border-gray-500 bg-gray-100 text-gray-700 p-2">Data de solicitação</th>
                 </tr>
 
-                <tr v-for="c in client" :key="c.id" @click.prevent="sendData(c)" class="cursor-pointer">
+                <tr v-show="client" v-for="c in client" :key="c.id" @click.prevent="sendData(c)" class="cursor-pointer">
 
                     <td class="border border-gray-500 bg-gray-100 text-gray-700 p-2"> {{ c.id }}</td>
                     <td class="border border-gray-500 bg-gray-100 text-gray-700 p-2">{{ c.NOME }}</td>
@@ -167,7 +167,7 @@ const config = {
 
 async function fetchData() {
     try {
-        const response = await axios.get('http://192.168.0.181:3333/adm/clients', config)
+        const response = await axios.get('http://192.168.0.181:3333/adm/clientsCadastrados', config)
         client.value = response.data
 
     } catch (err) {

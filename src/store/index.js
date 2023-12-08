@@ -5,7 +5,9 @@ export default createStore({
     User: {
         user:'',
         email:''
-    }
+    },
+
+    UserData:{}
  },
  getters: {
   
@@ -15,6 +17,10 @@ export default createStore({
       state.User.user = data.user;
       state.User.email = data.email;
       
+    },
+
+    setUserData(state, data){
+      state.UserData = data
     }
  },
  actions: {

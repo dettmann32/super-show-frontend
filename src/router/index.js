@@ -10,47 +10,100 @@ const routes = [
   {
     path: '/cadastro',
     name: 'cadastro',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    
+    component: () => import('../views/AboutView.vue')
   },
 
   {
     path: '/verify',
     name: 'verify',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/VerifyView.vue')
+   
+    component: () => import('../views/VerifyView.vue')
   },
 
-  {
-    path: '/gerenciamento',
-    name: 'gerenciamento',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/gerenciaView.vue')
-  },
 
   {
     path: '/message',
     name: 'mensagens',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/messageView.vue')
+  
+    component: () => import('../views/messageView.vue')
   },
 
   {
     path: '/login',
     name: 'login',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
+    
+    component: () => import( '../views/LoginView.vue')
   },
+
+
+  
+ 
+
+  {
+    path: '/gerenciamentoCliente',
+    name: 'Gerenciamento Cliente',
+
+    component: () => import('../views/gerenciaUserView.vue')
+  },
+
+
+
+  
+
+ 
+  
+
+
+
+  
+
+
+  {
+    path: '/Pendentes',
+    name: ' Pendentes',
+
+    component: () => import('../views/gerenciamentoPendentesView.vue')
+  },
+
+  {
+    path: '/Rejeitados',
+    name: 'Rejeitados',
+
+    component: () => import('../views/gerenciamentoRejeitados.vue')
+  },
+
+  
+  {
+    path: '/Concluidos',
+    name: 'Concluidos',
+
+    component: () => import('../views/gerenciamentoConcluidos.vue')
+  },
+
+
+
+
+
+
+  {
+    path: '/gerenciamento',
+    name: 'gerenciamento',
+
+    component: () => import('../views/gerenciaView.vue')
+  },
+
+
+
+
+  
+
+
+
+
+
+
+  
 
 
 ]
