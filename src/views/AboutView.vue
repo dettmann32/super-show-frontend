@@ -56,6 +56,7 @@
 
 
               <div class="w-full mr-2">
+                RG:
                 <div class=" relative ">
                   <input v-model="RG" type="number" id="rg"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -65,10 +66,14 @@
 
 
               <div class="w-full">
+                UF_RG:
                 <div class=" relative ">
-                  <input v-model="UF_RG" type="text" id="UF_RG"
+                  <select v-model="UF_RG" type="text" id="UF_RG"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    placeholder="UF RG" />
+                    placeholder="UF RG" >
+                    <option value="ES">ES</option>
+                    <option value="MG">MG</option>
+                  </select>
                 </div>
               </div>
 
@@ -78,8 +83,9 @@
 
             <div class="flex w-full mb-2">
 
-
+              
               <div class="w-full mr-2">
+                Data de Nascimento
                 <div class=" relative ">
                   <input v-model="Data_de_Nascimento" type="number" id="DataDeNascimento"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -88,26 +94,43 @@
               </div>
 
               <div class="w-full">
+                Sexo:
                 <div class=" relative ">
-                  <input v-model="SEXO" type="text" id="Sexo"
+                  <select v-model="SEXO" type="text" id="Sexo"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    placeholder="Sexo" />
+                    placeholder="Sexo" >
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                  </select>
                 </div>
               </div>
             </div>
 
 
             <div class="w-full">
+              Escolaridade:
               <div class=" relative ">
-                <input v-model="ESCOLARIDADE" type="text" id="Escolaridade"
+                <select v-model="ESCOLARIDADE" type="text" id="Escolaridade"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="Escolaridade" />
+                  placeholder="Escolaridade" >
+                  <option value="Ensino Fundamental Incompleto (1° a 5° ano)">Ensino Fundamental Incompleto (1° a 5° ano)</option>
+                  <option value="Ensino Fundamental Incompleto (6° a 8° ano)">Ensino Fundamental Incompleto (6° a 8° ano)</option>
+                  <option value="Ensino Fundamental">Ensino Fundamental</option>
+                  <option value="Ensino médio completo">Ensino médio completo</option>
+                  <option value="Ensino Superior completo">Ensino Superior completo</option>
+                  <option value="Pós Graduação">Pós Graduação</option>
+                  <option value="Mestrado">Mestrado</option>
+                  <option value="Doutorado">Doutorado</option>
+                  <option value="Pós Doutorado">Pós Doutorado</option>
+
+                </select>
               </div>
             </div>
 
             <div class="flex w-full mb-2">
-
+             
               <div class="w-24 mr-2">
+                DDD:
                 <div class=" relative ">
                   <select type="number" id="Celular"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4  bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -119,6 +142,7 @@
               </div>
 
               <div class="w-full">
+                Celular:
                 <div class=" relative ">
                   <input v-model="CELULAR" type="number" id="Celular"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -285,7 +309,7 @@ const formContainer = ref(null)
 const enviarDados = () => {
 
 
-  const DATA = new BuilderClass(DIA.value, CPF.value, RG.value, NOME.value, Data_de_Nascimento.value, SEXO.value,
+  const DATA = new BuilderClass(DIA.value, CPF.value.replace(/[\s._-]+/g, ''), RG.value, NOME.value, Data_de_Nascimento.value, SEXO.value,
     ESCOLARIDADE.value, DDD.value, CELULAR.value, TELEFONE.value, EMAIL.value, CEP.value, RUA.value, NUMERO.value, COMPLEMENTO.value,
     BAIRRO.value, CIDADE.value, ESTADO.value, UF_RG.value)
 

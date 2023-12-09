@@ -154,7 +154,7 @@ fetchData()
 
 async function getByCPF(){
     try {
-        await axios.get(`http://192.168.0.181:3333/adm/clientsRegectByCPF/${CPF.value}`, config).then((res)=>{
+        await axios.get(`http://192.168.0.181:3333/adm/clientsRegectByCPF/${CPF.value.replaceAll(' ', '')}`, config).then((res)=>{
            client.value = res.data
           
         })

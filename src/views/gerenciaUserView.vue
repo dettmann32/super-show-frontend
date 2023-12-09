@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -157,8 +157,8 @@
                         <div class="flex w-full mb-2">
 
                             <div class="w-24 mr-2">
+                                DDD:
                                 <div class=" relative">
-                                    <p class="text-right">.</p>
                                     <div id="DDD"
                                         class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4  bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
                                         {{ c.DDD }}
@@ -187,7 +187,9 @@
                         </div>
 
                         <div class="w-full">
+
                             <div class=" relative ">
+                                <p class="text-rigt">Email:</p>
                                 <div id="email"
                                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
                                     {{ c.EMAIL }}</div>
@@ -298,7 +300,7 @@
                             <button type="button" @click.prevent="menuPendent()"
                                 class="py-2 px-4 flex justify-center items-center  bg-yellow-700 hover:bg-yellow-800 focus:ring-yellow-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full">
                                 <img src="../assets//ErroIcon.png" alt="reject" class="h-[20px] w-[20px] mr-2">
-                                Cadastrar como Pendente
+                                Suspender
                             </button>
 
                         </div>
@@ -335,9 +337,31 @@
                                                     </path>
                                                 </svg>
                                             </span>
+
                                             <input type="text" id="sign-in-email" v-model="motivo"
                                                 class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                                 placeholder="Mensagem que sera enviada para o cliente descrevendo o motivo" />
+
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-col mb-2">
+                                        <div class="flex relative ">
+                                            <span
+                                                class="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                                                <img src="../assets/ferramenta-de-reparacao.png" alt="engrenagens"
+                                                    class="w-[16px] h-[16px]">
+                                            </span>
+
+
+
+                                            <input type="text" id="sign-in-email" v-model="motivoAdm"
+                                                class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                                placeholder="Mensagem para uso de adm" />
+
+
                                         </div>
                                     </div>
 
@@ -376,16 +400,13 @@
                                         <div class="flex relative ">
                                             <span
                                                 class="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
-                                                <svg width="15" height="15" fill="currentColor" viewBox="0 0 1792 1792"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M1792 710v794q0 66-47 113t-113 47h-1472q-66 0-113-47t-47-113v-794q44 49 101 87 362 246 497 345 57 42 92.5 65.5t94.5 48 110 24.5h2q51 0 110-24.5t94.5-48 92.5-65.5q170-123 498-345 57-39 100-87zm0-294q0 79-49 151t-122 123q-376 261-468 325-10 7-42.5 30.5t-54 38-52 32.5-57.5 27-50 9h-2q-23 0-50-9t-57.5-27-52-32.5-54-38-42.5-30.5q-91-64-262-182.5t-205-142.5q-62-42-117-115.5t-55-136.5q0-78 41.5-130t118.5-52h1472q65 0 112.5 47t47.5 113z">
-                                                    </path>
-                                                </svg>
+                                                <img src="../assets/ferramenta-de-reparacao.png" alt="engrenagens"
+                                                    class="w-[16px] h-[16px]">
+
                                             </span>
-                                            <input type="text" id="sign-in-email" v-model="motivo"
+                                            <input type="text" id="sign-in-email" v-model="motivoAdm"
                                                 class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                                placeholder="Mensage privada para adm" />
+                                                placeholder="Mensagem para uso de adm" />
                                         </div>
                                     </div>
 
@@ -428,6 +449,7 @@ import { useRouter } from 'vue-router';
 
 
 const motivo = ref()
+const motivoAdm = ref()
 const translate = ref(0)
 
 const translatePendente = ref(0)
@@ -475,13 +497,13 @@ fetchData()
 function ConcluirCadastro(c) {
     try {
 
-        console.log()
+        
         concluirCadastro.Concluir(c)
 
 
 
 
-        setTimeout(fetchData, 500)
+
 
 
 
@@ -506,13 +528,13 @@ function CancelarPendencia() {
 }
 
 async function SuspenderCadastro(c) {
-    const data = {data:c}
+    const data = {data:c} 
 
-    data.data.MOTIVO = motivo.value
+    data.data.MOTIVO = motivoAdm.value
 
-    await axios.post(`http://192.168.0.181:3333/adm/Pendentes`,data, config)
+    await axios.post(`http://192.168.0.181:3333/adm/Pendentes`, data, config)
 
-    
+    translatePendente.value = 0 
 
 
 }
@@ -524,8 +546,11 @@ function CancelarRegeicao() {
 
 
 function RegeitarCadastro(c) {
+    const data = c
 
-    Regeitar.Regect(c, motivo.value)
+    data.MOTIVO = motivoAdm.value
+
+    Regeitar.Regect(data, motivo.value)
 
     translate.value = 0
 
