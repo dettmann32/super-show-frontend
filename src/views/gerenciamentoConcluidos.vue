@@ -181,9 +181,10 @@ fetchData()
 
 async function fechCPF(){
     try{
-        const response = await axios.get(`http://192.168.0.181:3333/adm/clientsByCPF/${CPF.value}`, config)
+        const response = await axios.get(`http://192.168.0.181:3333/adm/clientsCadastradosByCPF/${CPF.value}`, config)
 
         client.value = response.data
+
     }
     catch(err){
         console.log(err)

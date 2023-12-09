@@ -7,15 +7,12 @@
 
 
         <div>
-            <nav class="bg-white dark:bg-gray-800  shadow py-4 ">
-                <div class="px-8 mx-auto max-w-7xl">
-                    <div class="flex items-center justify-between h-16">
-                        <div class=" flex items-center">
-                            <a class="flex-shrink-0" href="/">
-                                <img class="w-8 h-8" src="/icons/rocket.svg" alt="Workflow" />
-                            </a>
-                            <div class="hidden md:block">
-                                <div class="flex items-baseline ml-10 space-x-4">
+            <nav class="bg-white dark:bg-gray-800  shadow py-4 w-[100vw]">
+                <div class="px-8 mx-auto max-w-7xl flex justify-center">
+                    <div class="flex items-center justify-between h-16 ">
+                        <div class=" flex items-center justify-center">
+                            <div class="flex ">
+                                <div class="flex items-baseline ml-10 space-x-4 ">
                                     <router-link
                                         class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
                                         to="/gerenciamento">
@@ -23,90 +20,28 @@
                                     </router-link>
                                     <router-link
                                         class="text-gray-800 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                                        to="/gerenciamentoRejeitados">
+                                        to="/Rejeitados">
                                         Recusados
                                     </router-link>
                                     <router-link
                                         class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                                        to="/gerenciamentoPendentes">
+                                        to="/Pendentes">
                                         Pendentes
                                     </router-link>
 
                                     <router-link
                                         class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                                        to="/gerenciamentoConcluidos">
+                                        to="/Concluidos">
                                         Concluidos
                                     </router-link>
 
                                 </div>
                             </div>
                         </div>
-                        <div class="block">
-                            <div class="flex -mr-2 md:block">
-                                <form
-                                    class="flex flex-col justify-center w-3/4 max-w-sm space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0">
-                                    <div class=" relative ">
-                                        <input type="text" id="&quot;form-subscribe-Search"
-                                            class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                            placeholder="components" />
-                                    </div>
-                                    <button
-                                        class="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
-                                        type="submit">
-                                        Search
-                                    </button>
-                                </form>
-                            </div>
-                            <div class="flex items-center ml-4 md:ml-6">
-                            </div>
-                        </div>
-                        <div class="flex -mr-2 md:hidden">
-                            <button
-                                class="text-gray-800 dark:text-white hover:text-gray-300 inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
-                                <svg width="20" height="20" fill="currentColor" class="w-8 h-8" viewBox="0 0 1792 1792"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M1664 1344v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45z">
-                                    </path>
-                                </svg>
-                            </button>
-                        </div>
+                        
                     </div>
                 </div>
-                <div class="md:hidden">
-                    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                        <a class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                            href="/#">
-                            Home
-                        </a>
-                        <a class="text-gray-800 dark:text-white block px-3 py-2 rounded-md text-base font-medium" href="/#">
-                            Gallery
-                        </a>
-                        <a class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                            href="/#">
-                            Content
-                        </a>
-                        <a class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                            href="/#">
-                            Contact
-                        </a>
-                    </div>
-                    <div class="flex p-2">
-                        <form
-                            class="flex flex-col justify-center w-3/4 max-w-sm space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0">
-                            <div class=" relative ">
-                                <input type="text" id="&quot;form-subscribe-Search"
-                                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                    placeholder="components" />
-                            </div>
-                            <button
-                                class="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
-                                type="submit">
-                                Search
-                            </button>
-                        </form>
-                    </div>
-                </div>
+
             </nav>
         </div>
 
@@ -226,7 +161,7 @@
                                     <p class="text-right">.</p>
                                     <div id="DDD"
                                         class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4  bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
-                                        +{{ c.DDD }}
+                                        {{ c.DDD }}
                                     </div>
                                 </div>
                             </div>
@@ -323,6 +258,16 @@
                                     {{ c.ESTADO }}</div>
                             </div>
                         </div>
+
+
+                        <div class="w-full" v-show="c.MOTIVO">
+                            <div class=" relative ">
+                                <p class="text-right">Motivo:</p>
+                                <div id="estado"
+                                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                                    {{ c.MOTIVO }}</div>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -341,9 +286,19 @@
                         <div>
 
                             <button type="button" @click.prevent="menuRegect()"
-                                class="py-2 px-4 flex justify-center items-center  bg-red-700 hover:bg-red-800 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                class="py-2 px-4 flex justify-center items-center  bg-red-700 hover:bg-red-800 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full ">
                                 <img src="../assets//ErroIcon.png" alt="reject" class="h-[20px] w-[20px] mr-2">
                                 Rejeitar
+                            </button>
+
+                        </div>
+
+                        <div>
+
+                            <button type="button" @click.prevent="menuPendent()"
+                                class="py-2 px-4 flex justify-center items-center  bg-yellow-700 hover:bg-yellow-800 focus:ring-yellow-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full">
+                                <img src="../assets//ErroIcon.png" alt="reject" class="h-[20px] w-[20px] mr-2">
+                                Cadastrar como Pendente
                             </button>
 
                         </div>
@@ -407,6 +362,54 @@
 
                     </div>
 
+                    <div class="fixed w-full h-full m-auto zindex"
+                        :style="`transform:translateY(-${translatePendente}px); transition: 1s`">
+
+                        <div
+                            class="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow  sm:px-6 md:px-8 lg:px-10">
+                            <div class="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl ">
+                                Descreva o motivo
+                            </div>
+                            <div class="mt-8">
+                                <form action="#" autoComplete="off">
+                                    <div class="flex flex-col mb-2">
+                                        <div class="flex relative ">
+                                            <span
+                                                class="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                                                <svg width="15" height="15" fill="currentColor" viewBox="0 0 1792 1792"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M1792 710v794q0 66-47 113t-113 47h-1472q-66 0-113-47t-47-113v-794q44 49 101 87 362 246 497 345 57 42 92.5 65.5t94.5 48 110 24.5h2q51 0 110-24.5t94.5-48 92.5-65.5q170-123 498-345 57-39 100-87zm0-294q0 79-49 151t-122 123q-376 261-468 325-10 7-42.5 30.5t-54 38-52 32.5-57.5 27-50 9h-2q-23 0-50-9t-57.5-27-52-32.5-54-38-42.5-30.5q-91-64-262-182.5t-205-142.5q-62-42-117-115.5t-55-136.5q0-78 41.5-130t118.5-52h1472q65 0 112.5 47t47.5 113z">
+                                                    </path>
+                                                </svg>
+                                            </span>
+                                            <input type="text" id="sign-in-email" v-model="motivo"
+                                                class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                                placeholder="Mensage privada para adm" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="flex w-full">
+                                        <button type="submit" @click.prevent="SuspenderCadastro(c)"
+                                            class="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                            Enviar
+                                        </button>
+                                    </div>
+
+                                    <div>
+                                        <button type="submit" @click.prevent="CancelarPendencia()"
+                                            class="py-2 px-4 mt-2  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                            Cancela
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+
 
                 </div>
             </div>
@@ -427,6 +430,8 @@ import { useRouter } from 'vue-router';
 const motivo = ref()
 const translate = ref(0)
 
+const translatePendente = ref(0)
+
 
 const store = useStore()
 
@@ -445,7 +450,8 @@ let c = ref('')
 async function fetchData() {
     try {
         const data = store.state
-        const user = await axios.get(`http://192.168.0.181:3333/adm/clientsById/${data.UserData.id}`, config).then((res) => {
+        console.log(data)
+        await axios.get(`http://192.168.0.181:3333/adm/clientsById/${data.UserData.id}`, config).then((res) => {
 
             c.value = res.data.user
 
@@ -491,6 +497,26 @@ function menuRegect() {
 
 }
 
+function menuPendent() {
+    translatePendente.value = 1800
+}
+
+function CancelarPendencia() {
+    translatePendente.value = 0
+}
+
+async function SuspenderCadastro(c) {
+    const data = {data:c}
+
+    data.data.MOTIVO = motivo.value
+
+    await axios.post(`http://192.168.0.181:3333/adm/Pendentes`,data, config)
+
+    
+
+
+}
+
 function CancelarRegeicao() {
     translate.value = 0
 }
@@ -533,6 +559,8 @@ async function Message(c) {
 
 </script>
 
-<style scoped>.zindex {
+<style scoped>
+.zindex {
     z-index: 1;
-}</style>
+}
+</style>

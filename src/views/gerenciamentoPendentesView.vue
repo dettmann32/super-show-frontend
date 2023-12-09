@@ -113,7 +113,7 @@
 
 
 
-        <h1 class="text-center">Solicitados</h1>
+        <h1 class="text-center">Pendentes</h1>
         <div class="flex justify-center items-center mt-10 mb-10">
 
             <table border="1" class="border border-gray-500">
@@ -167,7 +167,7 @@ const config = {
 
 async function fetchData() {
     try {
-        const response = await axios.get('http://192.168.0.181:3333/adm/clients', config)
+        const response = await axios.get('http://192.168.0.181:3333/adm/clientsPendentes', config)
         client.value = response.data
 
     } catch (err) {
