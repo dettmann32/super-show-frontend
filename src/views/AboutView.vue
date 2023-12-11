@@ -70,7 +70,7 @@
                 <div class=" relative ">
                   <select v-model="UF_RG" type="text" id="UF_RG"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    placeholder="UF RG" >
+                    placeholder="UF RG">
                     <option value="ES">ES</option>
                     <option value="MG">MG</option>
                   </select>
@@ -83,7 +83,7 @@
 
             <div class="flex w-full mb-2">
 
-              
+
               <div class="w-full mr-2">
                 Data de Nascimento
                 <div class=" relative ">
@@ -98,9 +98,10 @@
                 <div class=" relative ">
                   <select v-model="SEXO" type="text" id="Sexo"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    placeholder="Sexo" >
+                    placeholder="Sexo">
                     <option value="Masculino">Masculino</option>
                     <option value="Feminino">Feminino</option>
+                    <option value="Prefiro não Dizer">Prefiro não Dizer</option>
                   </select>
                 </div>
               </div>
@@ -112,9 +113,11 @@
               <div class=" relative ">
                 <select v-model="ESCOLARIDADE" type="text" id="Escolaridade"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="Escolaridade" >
-                  <option value="Ensino Fundamental Incompleto (1° a 5° ano)">Ensino Fundamental Incompleto (1° a 5° ano)</option>
-                  <option value="Ensino Fundamental Incompleto (6° a 8° ano)">Ensino Fundamental Incompleto (6° a 8° ano)</option>
+                  placeholder="Escolaridade">
+                  <option value="Ensino Fundamental Incompleto (1° a 5° ano)">Ensino Fundamental Incompleto (1° a 5° ano)
+                  </option>
+                  <option value="Ensino Fundamental Incompleto (6° a 8° ano)">Ensino Fundamental Incompleto (6° a 8° ano)
+                  </option>
                   <option value="Ensino Fundamental">Ensino Fundamental</option>
                   <option value="Ensino médio completo">Ensino médio completo</option>
                   <option value="Ensino Superior completo">Ensino Superior completo</option>
@@ -128,7 +131,7 @@
             </div>
 
             <div class="flex w-full mb-2">
-             
+
               <div class="w-24 mr-2">
                 DDD:
                 <div class=" relative ">
@@ -144,7 +147,7 @@
               <div class="w-full">
                 Celular:
                 <div class=" relative ">
-                  <input v-model="CELULAR" type="number" id="Celular"
+                  <input v-model="CELULAR" type="text" id="Celular"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="Celular" />
                 </div>
@@ -172,7 +175,7 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <input v-model="CEP" type="number" id="cep"
+                <input v-model="CEP" type="text" id="cep"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="CEP" />
               </div>
@@ -235,8 +238,8 @@
 
 
 
-          <div class="mt-5" >
-            <span class="block w-full rounded-md shadow-sm" >
+          <div class="mt-5">
+            <span class="block w-full rounded-md shadow-sm">
               <button @click.prevent="enviarDados" ref="formContainer" type="button"
                 class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                 Enviar
@@ -256,6 +259,11 @@ import BuilderClass from '../components/Modules/builder'
 import cartao from '../components/Modules/cartao'
 import { ref, watch, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import validate from '../components/Modules/validarCpf'
+import validar from '../components/Modules/validarCelular'
+
+import cep from 'cep-promise'
+
 
 const DIA = ref(0)
 const CPF = ref()
@@ -280,7 +288,7 @@ const ESTADO = ref()
 
 let diaBom = ref('')
 
-
+// calculo do dia bom
 function dia(DIA) {
 
   if (DIA == 5) {
@@ -300,7 +308,28 @@ function dia(DIA) {
 watch(DIA, () => dia(DIA.value))
 
 
+//consultar cep
 
+
+
+
+watch(CEP, () =>
+
+
+  setTimeout( async () => { cep(CEP.value).then((response) => {
+
+    if (!response.cep) alert("Digite um CEP válido")
+    if (response.city) CIDADE.value = response.city
+    if (response.state) ESTADO.value = response.state
+    if (response.street) RUA.value = response.street
+    if (response.neighborhood) BAIRRO.value = response.neighborhood
+
+  }).catch(() => {
+    alert('Algo deu errado ao buscar este CEP')
+  })},5000))
+
+
+//enviar dados
 const router = useRouter()
 
 const formContainer = ref(null)
@@ -308,16 +337,29 @@ const formContainer = ref(null)
 
 const enviarDados = () => {
 
+  if (!validate.validarCPF(CPF.value.replace(/[\s._-]+/g, ''))) {
+    alert("Digite um CPF valido")
+  } else if (!validar.validarNumeroCelular(CELULAR.value)) {
+    alert("Digite um numero de celular válido")
+  } else {
 
-  const DATA = new BuilderClass(DIA.value, CPF.value.replace(/[\s._-]+/g, ''), RG.value, NOME.value, Data_de_Nascimento.value, SEXO.value,
-    ESCOLARIDADE.value, DDD.value, CELULAR.value, TELEFONE.value, EMAIL.value, CEP.value, RUA.value, NUMERO.value, COMPLEMENTO.value,
-    BAIRRO.value, CIDADE.value, ESTADO.value, UF_RG.value)
+
+    try{
+    const DATA = new BuilderClass(DIA.value, CPF.value.replace(/[\s._-]+/g, ''), RG.value, NOME.value, Data_de_Nascimento.value, SEXO.value,
+      ESCOLARIDADE.value, DDD.value, CELULAR.value.replace(/[\s._-]+/g, ''), TELEFONE.value, EMAIL.value, CEP.value, RUA.value, NUMERO.value, COMPLEMENTO.value,
+      BAIRRO.value, CIDADE.value, ESTADO.value, UF_RG.value)
 
 
-  cartao.enviarCartaoApi(DATA, router)
+    cartao.enviarCartaoApi(DATA, router)
+  }catch(err){
+  console.log(err)
+}
+}
 
 }
 
+
+//enviar com enter
 onMounted(() => {
   formContainer.value.addEventListener('keyup', (event) => {
     alert('deu certo')
