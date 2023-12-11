@@ -7,7 +7,7 @@
 
 
         <div>
-            <nav class="bg-white dark:bg-gray-800  shadow py-4 w-[100vw]">
+            <nav class="bg-gray-800  shadow py-4 w-[100vw]">
                 <div class="px-8 mx-auto max-w-7xl flex justify-center">
                     <div class="flex items-center justify-between h-16 ">
                         <div class=" flex items-center justify-center">
@@ -19,7 +19,7 @@
                                         Solicitados
                                     </router-link>
                                     <router-link
-                                        class="text-gray-800 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                                        class="text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
                                         to="/Rejeitados">
                                         Recusados
                                     </router-link>
@@ -299,16 +299,17 @@
 
                             <button type="button" @click.prevent="menuPendent()"
                                 class="py-2 px-4 flex justify-center items-center  bg-yellow-700 hover:bg-yellow-800 focus:ring-yellow-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full">
-                                <img src="../assets//ErroIcon.png" alt="reject" class="h-[20px] w-[20px] mr-2">
+                                <img src="../assets/relogio.png" alt="reject" class="h-[20px] w-[20px] mr-2">
                                 Suspender
                             </button>
 
                         </div>
 
-                        <div>
+                        <div >
 
                             <button @click.prevent="Message(c)"
-                                class=" py-2 px-4 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none">
+                                class=" py-2 px-4 flex transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none">
+                                <img src="../assets/aviao-de-papel.png" alt="reject" class="h-[20px] w-[20px] mr-2">
                                 Mensagem
                             </button>
 
@@ -340,7 +341,7 @@
 
                                             <input type="text" id="sign-in-email" v-model="motivo"
                                                 class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                                placeholder="Mensagem que sera enviada para o cliente descrevendo o motivo" />
+                                                placeholder="Motivo que será enviado para o cliente" />
 
 
 
@@ -518,7 +519,7 @@ function ConcluirCadastro(c) {
         concluirCadastro.Concluir(c)
 
 
-        
+        alert("Cadastro concluido com sucesso")        
 
 
 

@@ -147,7 +147,7 @@
               <div class="w-full">
                 Celular:
                 <div class=" relative ">
-                  <input v-model="CELULAR" type="text" id="Celular"
+                  <input v-model="CELULAR" type="text" id="Celular" maxlength="9"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="Celular" />
                 </div>
@@ -175,7 +175,7 @@
 
             <div class="w-full">
               <div class=" relative ">
-                <input v-model="CEP" type="text" id="cep"
+                <input v-model="CEP" type="text" id="cep" maxlength="8"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="CEP" />
               </div>
@@ -313,20 +313,31 @@ watch(DIA, () => dia(DIA.value))
 
 
 
-watch(CEP, () =>
+watch(CEP, () => {
+  if (CEP.value.length == 8) cep(CEP.value).then((response) => {
 
 
-  setTimeout( async () => { cep(CEP.value).then((response) => {
+    if (!response.cep) {
 
-    if (!response.cep) alert("Digite um CEP válido")
-    if (response.city) CIDADE.value = response.city
-    if (response.state) ESTADO.value = response.state
-    if (response.street) RUA.value = response.street
-    if (response.neighborhood) BAIRRO.value = response.neighborhood
+    } else {
+
+      if (response.city) CIDADE.value = response.city
+      if (response.state) ESTADO.value = response.state
+      if (response.street) RUA.value = response.street
+      if (response.neighborhood) BAIRRO.value = response.neighborhood
+
+
+    }
+
 
   }).catch(() => {
-    alert('Algo deu errado ao buscar este CEP')
-  })},5000))
+    alert('Digite um CEP válido')
+  })
+
+
+
+}
+)
 
 
 //enviar dados
@@ -337,24 +348,34 @@ const formContainer = ref(null)
 
 const enviarDados = () => {
 
+  try{
+
+
   if (!validate.validarCPF(CPF.value.replace(/[\s._-]+/g, ''))) {
     alert("Digite um CPF valido")
-  } else if (!validar.validarNumeroCelular(CELULAR.value)) {
+  }else if (!validar.validarNumeroCelular(CELULAR.value)) {
     alert("Digite um numero de celular válido")
-  } else {
+  }else if (!DIA.value) {
+    alert("Escolha um dia de vencimento da fatura")
+  }else if (parseInt(Data_de_Nascimento.value) - new Date().getFullYear() < 18){
+    alert("Você precisa ser maior de idade para se cadastrar.")
+  }
+  else {
 
 
-    try{
-    const DATA = new BuilderClass(DIA.value, CPF.value.replace(/[\s._-]+/g, ''), RG.value, NOME.value, Data_de_Nascimento.value, SEXO.value,
-      ESCOLARIDADE.value, DDD.value, CELULAR.value.replace(/[\s._-]+/g, ''), TELEFONE.value, EMAIL.value, CEP.value, RUA.value, NUMERO.value, COMPLEMENTO.value,
-      BAIRRO.value, CIDADE.value, ESTADO.value, UF_RG.value)
+    try {
+      const DATA = new BuilderClass(DIA.value, CPF.value.replace(/[\s._-]+/g, ''), RG.value, NOME.value, Data_de_Nascimento.value, SEXO.value,
+        ESCOLARIDADE.value, DDD.value, CELULAR.value.replace(/[\s._-]+/g, ''), TELEFONE.value, EMAIL.value, CEP.value, RUA.value, NUMERO.value, COMPLEMENTO.value,
+        BAIRRO.value, CIDADE.value, ESTADO.value, UF_RG.value)
 
 
-    cartao.enviarCartaoApi(DATA, router)
-  }catch(err){
-  console.log(err)
-}
-}
+      cartao.enviarCartaoApi(DATA, router)
+    } catch (err) {
+      console.log(err)
+    }
+  }}catch(err){
+    alert("Erro ao enviar formulario! Verifque se os campos foram preenchidos corretamente.")
+  }
 
 }
 

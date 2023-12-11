@@ -4,7 +4,7 @@
 
 
         <div>
-            <nav class="bg-white dark:bg-gray-800  shadow py-4  justify-between">
+            <nav class="bg-gray-800  shadow py-4  justify-between">
                 <div class="px-8 mx-auto max-w-7xl justify-between">
                     <div class="flex items-center justify-between h-16">
                         <div class=" flex items-center justify-between">
@@ -19,7 +19,7 @@
                                         Solicitados
                                     </router-link>
                                     <router-link
-                                        class="text-gray-800 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                                        class="text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
                                         to="/Rejeitados">
                                         Recusados
                                     </router-link>
@@ -45,7 +45,7 @@
                                     <div class=" relative ">
                                         <input type="text" id="&quot;form-subscribe-Search" v-model="CPF"
                                             class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                            placeholder="Pesquise o CPF" />
+                                            placeholder="Pesquise por CPF" />
                                     </div>
                                     <button
                                     @click.prevent="fechCPF()"
@@ -71,40 +71,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="md:hidden">
-                    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                        <a class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                            href="/#">
-                            Home
-                        </a>
-                        <a class="text-gray-800 dark:text-white block px-3 py-2 rounded-md text-base font-medium" href="/#">
-                            Gallery
-                        </a>
-                        <a class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                            href="/#">
-                            Content
-                        </a>
-                        <a class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                            href="/#">
-                            Contact
-                        </a>
-                    </div>
-                    <div class="flex p-2">
-                        <form
-                            class="flex flex-col justify-center w-3/4 max-w-sm space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0">
-                            <div class=" relative ">
-                                <input type="text" id="&quot;form-subscribe-Search"
-                                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                    placeholder="components" />
-                            </div>
-                            <button
-                                class="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
-                                type="submit">
-                                Search
-                            </button>
-                        </form>
-                    </div>
-                </div>
+              
             </nav>
         </div>
 
