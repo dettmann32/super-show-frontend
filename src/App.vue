@@ -1,6 +1,6 @@
 <template>
   
-  <div class="overflow-hidden">
+  <div class="overflow-hidden bg-gray-300">
     
       
    
@@ -25,7 +25,15 @@ import FooterCompo from './components/FooterCompo.vue';
 <style>
 body{
   overflow-x: hidden;
+  @apply bg-gray-300
+
 }
+
+*{
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+
 
 
 </style>

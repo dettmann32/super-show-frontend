@@ -172,14 +172,19 @@
             </div>
 
             <!-- Endereços de residencia -->
-
-            <div class="w-full">
-              <div class=" relative ">
-                <input v-model="CEP" type="text" id="cep" maxlength="8"
-                  class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="CEP" />
+            <div class="flex items-end">
+              <div class="w-[80%] ">
+                <div class=" relative ">
+                  <input v-model="CEP" type="text" id="cep" maxlength="8"
+                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    placeholder="CEP" />
+                </div>
+              </div>
+              <div class="ml-3">
+                <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank" ref="nofollow" class="text-sm underline">Não sei meu CEP</a>
               </div>
             </div>
+
 
             <div class="flex w-full mb-2">
 
@@ -348,32 +353,33 @@ const formContainer = ref(null)
 
 const enviarDados = () => {
 
-  try{
+  try {
 
 
-  if (!validate.validarCPF(CPF.value.replace(/[\s._-]+/g, ''))) {
-    alert("Digite um CPF valido")
-  }else if (!validar.validarNumeroCelular(CELULAR.value)) {
-    alert("Digite um numero de celular válido")
-  }else if (!DIA.value) {
-    alert("Escolha um dia de vencimento da fatura")
-  }else if (parseInt(Data_de_Nascimento.value) - new Date().getFullYear() < 18){
-    alert("Você precisa ser maior de idade para se cadastrar.")
-  }
-  else {
-
-
-    try {
-      const DATA = new BuilderClass(DIA.value, CPF.value.replace(/[\s._-]+/g, ''), RG.value, NOME.value, Data_de_Nascimento.value, SEXO.value,
-        ESCOLARIDADE.value, DDD.value, CELULAR.value.replace(/[\s._-]+/g, ''), TELEFONE.value, EMAIL.value, CEP.value, RUA.value, NUMERO.value, COMPLEMENTO.value,
-        BAIRRO.value, CIDADE.value, ESTADO.value, UF_RG.value)
-
-
-      cartao.enviarCartaoApi(DATA, router)
-    } catch (err) {
-      console.log(err)
+    if (!validate.validarCPF(CPF.value.replace(/[\s._-]+/g, ''))) {
+      alert("Digite um CPF valido")
+    } else if (!validar.validarNumeroCelular(CELULAR.value)) {
+      alert("Digite um numero de celular válido")
+    } else if (!DIA.value) {
+      alert("Escolha um dia de vencimento da fatura")
+    } else if (parseInt(Data_de_Nascimento.value) - new Date().getFullYear() < 18) {
+      alert("Você precisa ser maior de idade para se cadastrar.")
     }
-  }}catch(err){
+    else {
+
+
+      try {
+        const DATA = new BuilderClass(DIA.value, CPF.value.replace(/[\s._-]+/g, ''), RG.value, NOME.value, Data_de_Nascimento.value, SEXO.value,
+          ESCOLARIDADE.value, DDD.value, CELULAR.value.replace(/[\s._-]+/g, ''), TELEFONE.value, EMAIL.value, CEP.value, RUA.value, NUMERO.value, COMPLEMENTO.value,
+          BAIRRO.value, CIDADE.value, ESTADO.value, UF_RG.value)
+
+
+        cartao.enviarCartaoApi(DATA, router)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  } catch (err) {
     alert("Erro ao enviar formulario! Verifque se os campos foram preenchidos corretamente.")
   }
 
