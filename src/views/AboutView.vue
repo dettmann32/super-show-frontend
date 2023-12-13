@@ -85,30 +85,65 @@
 
             </div>
 
-            <div class="flex w-full mb-2">
+            <div class="w-full mb-2 ">
+              <span>Data de Nascimento:</span>
+
+              <div class="flex items-center space-x-1 w-full">
+
+                <div class="w-full  flex space-x-2">
+
+                  <div class=" relative w-full">
+                    <span class="text-gray-300">.</span>
+                    <select v-model="Dia" type="text" id="DataDeNascimento" maxlength="8"
+                      class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      placeholder="Data de Nascimento">
+                      <option :value="''">Dia</option>
+                      <option v-for="dia in Dias" :value="dia">{{ dia }}</option>
+
+                    </select>
 
 
-              <div class="w-full mr-2">
-                Data de Nascimento:
-                <div class=" relative ">
-                  <input v-model="Data_de_Nascimento" type="text" id="DataDeNascimento" maxlength="8"
-                    @input="onInputDataChange()"
-                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    placeholder="Data de Nascimento" />
+                  </div>
+
+                  <div class=" relative w-full">
+                    <span class="text-gray-300">.</span>
+                    <select v-model="Mes" type="text" id="DataDeNascimento" maxlength="8"
+                      class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      placeholder="Data de Nascimento">
+                      <option :value="''">Mês:</option>
+                      <option v-for="mes in meses" :value="mes">{{ mes }}</option>
+
+                    </select>
+
+
+                  </div>
+
+                  <div class=" relative w-full">
+                    <span class="text-gray-300">.</span>
+                    <select v-model="Ano" type="text" id="DataDeNascimento" maxlength="8"
+                      class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      placeholder="Data de Nascimento">
+                      <option :value="''">Ano:</option>
+                      <option v-for="ano in anos" :value="ano">{{ ano }}</option>
+
+                    </select>
+
+
+                  </div>
                 </div>
-              </div>
 
-              <div class="w-full">
-                Sexo:
-                <div class=" relative ">
-                  <select v-model="SEXO" type="text" id="Sexo"
-                    class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    placeholder="Sexo">
-                    <option :value="''">Sexo:</option>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Feminino">Feminino</option>
-                    <option value="Prefiro não Dizer">Prefiro não Dizer</option>
-                  </select>
+                <div class="w-full">
+                  Sexo:
+                  <div class=" relative ">
+                    <select v-model="SEXO" type="text" id="Sexo"
+                      class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      placeholder="Sexo">
+                      <option :value="''">Sexo:</option>
+                      <option value="Masculino">Masculino</option>
+                      <option value="Feminino">Feminino</option>
+                      <option value="Prefiro não Dizer">Prefiro não Dizer</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
@@ -186,7 +221,7 @@
               <div class="w-[80%] ">
                 <p>CEP:</p>
                 <div class=" relative ">
-                  <input v-model="CEP" type="text" id="cep" maxlength="9" @input="onInputCEPchange()"
+                  <input v-model="CEP" type="text" id="cep" maxlength="9" @input="onInputCEPchange"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="CEP" />
                 </div>
@@ -300,13 +335,18 @@ const DDD = ref('')
 const CELULAR = ref()
 const TELEFONE = ref()
 const EMAIL = ref()
-const CEP = ref()
+const CEP = ref('')
 const RUA = ref()
 const NUMERO = ref()
 const COMPLEMENTO = ref()
 const BAIRRO = ref()
 const CIDADE = ref()
 const ESTADO = ref()
+const Dia = ref('')
+const Mes = ref('')
+const Ano = ref('')
+
+const Dias = ref(Array.from({ length: 31 }, (_, index) => (index + 1).toString()))
 
 const estadosBrasileiros = ref([
   'ES', 'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
@@ -315,6 +355,35 @@ const estadosBrasileiros = ref([
 const dddsBrasileiros = ref([
   '27', '82', '96', '92', '71', '85', '61', '27', '62', '98', '65', '67', '31', '91', '83', '41', '81', '86', '21', '84', '51', '69', '95', '48', '11', '79', '63'
 ])
+
+const meses = ref([
+  'Janeiro',
+  'Fevereiro',
+  'Março',
+  'Abril',
+  'Maio',
+  'Junho',
+  'Julho',
+  'Agosto',
+  'Setembro',
+  'Outubro',
+  'Novembro',
+  'Dezembro'
+])
+
+
+let anoAtual = new Date().getFullYear();
+let anos = ref([])
+
+for (let ano = 1920; ano <= anoAtual; ano++) {
+  anos.value.push(ano.toString());
+}
+
+
+
+
+
+
 
 
 
@@ -348,32 +417,63 @@ watch(DIA, () => dia(DIA.value))
 
 
 
+// watch(CEP, () => {
+//   if (CEP.value.length == 9 && CPF.value[5] != '-' || CPF.value.length == 10 && CPF.value[5] === '-') cep(CEP.value.replace(/[\s._-]+/g, '')).then((response) => {
+
+
+//     if (!response.cep) {
+
+//     } else {
+
+//       if (response.city) CIDADE.value = response.city
+//       if (response.state) ESTADO.value = response.state
+//       if (response.street) RUA.value = response.street
+//       if (response.neighborhood) BAIRRO.value = response.neighborhood
+
+
+//     }
+
+
+//   }).catch(() => {
+//     alert('Digite um CEP válido')
+
+//   })
+
+
+
+// }
+// )
+
+
+
+
+
 watch(CEP, () => {
-  if (CEP.value.length == 9 && CPF.value[5] != '-' || CPF.value.length == 10 && CPF.value[5] === '-') cep(CEP.value.replace(/[\s._-]+/g, '')).then((response) => {
+  if (CEP.value.length === 9 && CPF && CPF.value && CPF.value[5] !== '-') {
+    cep(CEP.value.replace(/[\s._-]+/g, '')).then((response) => {
+      if (!response.cep) {
+          console.log('sem resposta')
+      } else {
+
+        if (response.city) CIDADE.value = response.city
+        if (response.state) ESTADO.value = response.state
+        if (response.street) RUA.value = response.street
+        if (response.neighborhood) BAIRRO.value = response.neighborhood
 
 
-    if (!response.cep) {
+      }
 
-    } else {
-
-      if (response.city) CIDADE.value = response.city
-      if (response.state) ESTADO.value = response.state
-      if (response.street) RUA.value = response.street
-      if (response.neighborhood) BAIRRO.value = response.neighborhood
-
-
-    }
-
-
-  }).catch(() => {
-    alert('Digite um CEP válido')
-
-  })
+    }).catch(() => {
+      alert('Digite um CEP válido');
+    });
+  }
+});
 
 
 
-}
-)
+
+
+
 
 
 //enviar dados
@@ -393,23 +493,17 @@ const enviarDados = () => {
       alert("Digite um numero de celular válido")
     } else if (!DIA.value) {
       alert("Escolha um dia de vencimento da fatura")
-    } else if (Data_de_Nascimento.value.length < 8) {
+    } else if (new Date().getFullYear() - parseInt(Ano.value) < 18) {
 
-      if (parseInt(Data_de_Nascimento.value)) {
-        if (parseInt(Data_de_Nascimento.value) < 1011010 || parseInt(Data_de_Nascimento.value) < 11010) {
-          alert("Data de nacimento inválida! Digite a data corretamente.")
-        } else if (parseInt(Data_de_Nascimento.value > 1012060 || parseInt(Data_de_Nascimento.value > 9302060))) {
-          alert("Data de nacimento inválida! Digite a data corretamente.")
-        }
-      } else {
-        alert("Data de nacimento inválida! Digite a data corretamente.")
-      }
+
+      alert("Você precisa ser maior de 18 anos para fazer um cadastro")
+
 
 
     }
     else {
-
-
+      Data_de_Nascimento.value = Dia.value + Mes.value + Ano.value
+      console.log(Data_de_Nascimento.value)
       try {
         const DATA = new BuilderClass(DIA.value, CPF.value.replace(/[\s._-]+/g, ''),
           RG.value, NOME.value,
@@ -427,6 +521,10 @@ const enviarDados = () => {
       }
     }
   } catch (err) {
+
+
+
+
     alert("Erro ao enviar formulario! Verifque se os campos foram preenchidos corretamente.")
   }
 
@@ -436,7 +534,7 @@ const enviarDados = () => {
 //enviar com enter
 onMounted(() => {
   formContainer.value.addEventListener('keyup', (event) => {
-    alert('deu certo')
+
     if (event.key === 'Enter') {
       enviarDados();
     }
@@ -445,12 +543,10 @@ onMounted(() => {
 
 
 
-function onInputDataChange() {
-  Data_de_Nascimento.value = Data_de_Nascimento.value.replace(/[^\d]/g, '')
-}
+
 
 //MASCARA DE CPF
-let count
+
 
 const CpfMask = () => {
 
@@ -475,29 +571,41 @@ function onInputCPFChange() {
   CPF.value = CPF.value.replace(/[^\d.-]/g, '')
 }
 
-watch(CPF, CpfMask)
+watch(CPF.value, CpfMask)
 
 
 
 
 //MASCARA DE CEP
+
+
+const cepMask = () => {
+  if (CEP.value) {
+
+    if (CEP.value.length == 5) {
+      CEP.value += '-'
+    }
+  }
+
+}
+
+watch(CEP, cepMask)
+
+
+
+
 function onInputCEPchange() {
 
 
-   if(CEP.value) CEP.value = CEP.value.replace(/[^\d-]/g, '')
-
-    
-  }
 
 
-
-const CepMask = () => {
-
-  if(CEP.value.length == 5) CEP.value += '-' 
-} 
+  if (CEP.value) CEP.value = CEP.value.replace(/[^\d-]/g, '')
 
 
-watch(CEP,CepMask )
+}
+
+
+
 
 
 
