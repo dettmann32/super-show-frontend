@@ -1,12 +1,35 @@
 <template>
-    <div>
+    <div class="mb-10">
         <section class=" flex flex-col justify-center items-center w-[100vw]">
 
             <div
                 class="bg-gray-300 border-opacity-10 p-8 border-collapse border border-l-1 border-t-1 rounded-tl-xl border-black border-b-0 border-r-0 mt-10 mb-10 w-[90vw] space-y-10">
 
 
-                <h2 class="text-center text-[3vw]">Pague sua fatura pela chave pix e mande o comprovante via whatsapp</h2>
+                <h2 class="text-center lg:text-6xl text-xl">Pague sua fatura pela chave pix e mande o comprovante via <a href="
+                    https://linkme.bio/supershowsupermercados" class="text-green-600 hover:underline"
+                        target="_blank">Whatsapp</a></h2>
+                <h3 class="text-center text-md lg:text-4xl">Envie o comprovante para o Whatsapp de compras da loja de sua
+                    preferencia</h3>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="160" height="160" viewBox="0 0 80 80"
+                    class="lg:h-[250px] lg:w-[250px]">
+                    <path fill="#bae0bd" stroke="#5e9c76" stroke-miterlimit="10"
+                        d="M19.373,19.543h-1.159L31.92,5.837 c4.466-4.449,11.695-4.449,16.161,0l13.706,13.706h-1.159c-2.728,0-5.302,1.057-7.228,3L41.807,34.085 c-1.006,1.006-2.608,1.006-3.614,0L26.601,22.543C24.674,20.6,22.1,19.543,19.373,19.543z">
+                    </path>
+                    <path fill="#bae0bd" stroke="#5e9c76" stroke-miterlimit="10"
+                        d="M60.627,60.457h1.159L48.08,74.163 c-4.466,4.449-11.695,4.449-16.161,0L18.213,60.457h1.159c2.728,0,5.302-1.057,7.228-3l11.592-11.541 c1.006-1.006,2.608-1.006,3.614,0l11.592,11.541C55.326,59.4,57.9,60.457,60.627,60.457z">
+                    </path>
+                    <path fill="#bae0bd" stroke="#5e9c76" stroke-miterlimit="10"
+                        d="M74.163,48.08l-8.967,8.967h-4.569 c-1.824,0-3.529-0.716-4.824-1.995L44.211,43.495c-2.318-2.318-6.103-2.318-8.421,0L24.197,55.053 c-1.296,1.279-3,1.995-4.824,1.995h-4.569L5.837,48.08c-4.449-4.466-4.449-11.695,0-16.161l8.967-8.967h4.569 c1.824,0,3.529,0.716,4.824,1.995l11.592,11.558c1.159,1.159,2.693,1.739,4.211,1.739c1.517,0,3.051-0.58,4.211-1.739 l11.592-11.558c1.296-1.279,3-1.995,4.824-1.995h4.569l8.967,8.967C78.612,36.386,78.612,43.614,74.163,48.08z">
+                    </path>
+                </svg>
+                <p class="text-center text-red-600 text-3xl mt-2 mb-2 font-bold">GRUPO FK</p>
+
+                <p class="text-center text-xl">CHAVE PIX:</p>
+
+                <p class="text-center text-xl">04609714000152</p>
             </div>
         </section>
     </div>

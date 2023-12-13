@@ -11,6 +11,7 @@ class cartaoClass {
             
             router.push('/verify')
         }).catch((err) => {
+            console.log(data)
             console.log('algo deu errado' + err)
             alert('Algo deu errado verifique se todos os dados foram preenchidos corretamente')
             return false

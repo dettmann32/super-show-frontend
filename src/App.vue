@@ -23,6 +23,9 @@ import FooterCompo from './components/FooterCompo.vue';
 
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+
 body{
   overflow-x: hidden;
   @apply bg-gray-300
@@ -30,7 +33,7 @@ body{
 }
 
 *{
-  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+  font-family: 'Roboto', Arial, sans-serif 
 }
 
 

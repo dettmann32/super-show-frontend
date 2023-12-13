@@ -25,9 +25,10 @@
                 <p>Dia de Vencimento da fatura:</p>
                 <p class="text-right">Dia bom {{ diaBom }}</p>
 
-                <select type="text" id="ValidadeDaFatura"
-                  class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="Your price" v-model="DIA">
+                <select type="text" id="ValidadeDaFatura" title="Selecione o dia de vencimento da fatura"
+                  class="rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  v-model="DIA">
+                  <option :value="''">Selecione o dia de vencimento da fatura</option>
                   <option value="5">Dia 5</option>
                   <option value="10">Dia 10</option>
                   <option value="15">Dia 15</option>
@@ -38,13 +39,15 @@
             </div>
 
             <div class="w-full">
+              <p>CPF:</p>
               <div class=" relative ">
-                <input v-model="CPF" type="text" id="cpf"
+                <input v-model="CPF" type="text" id="cpf" maxlength="14" @input="onInputCPFChange"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="CPF" />
               </div>
             </div>
             <div class="w-full">
+              <p>Nome:</p>
               <div class=" relative">
                 <input v-model="NOME" type="text" id="nome"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -71,8 +74,9 @@
                   <select v-model="UF_RG" type="text" id="UF_RG"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="UF RG">
-                    <option value="ES">ES</option>
-                    <option value="MG">MG</option>
+                    <option :value="''">UF_RG:</option>
+                    <option v-for="c in estadosBrasileiros" :value="c">{{ c }}</option>
+
                   </select>
                 </div>
               </div>
@@ -85,9 +89,10 @@
 
 
               <div class="w-full mr-2">
-                Data de Nascimento
+                Data de Nascimento:
                 <div class=" relative ">
-                  <input v-model="Data_de_Nascimento" type="number" id="DataDeNascimento"
+                  <input v-model="Data_de_Nascimento" type="text" id="DataDeNascimento" maxlength="8"
+                    @input="onInputDataChange()"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="Data de Nascimento" />
                 </div>
@@ -99,6 +104,7 @@
                   <select v-model="SEXO" type="text" id="Sexo"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="Sexo">
+                    <option :value="''">Sexo:</option>
                     <option value="Masculino">Masculino</option>
                     <option value="Feminino">Feminino</option>
                     <option value="Prefiro não Dizer">Prefiro não Dizer</option>
@@ -114,6 +120,7 @@
                 <select v-model="ESCOLARIDADE" type="text" id="Escolaridade"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Escolaridade">
+                  <option :value="''">Escolaridade:</option>
                   <option value="Ensino Fundamental Incompleto (1° a 5° ano)">Ensino Fundamental Incompleto (1° a 5° ano)
                   </option>
                   <option value="Ensino Fundamental Incompleto (6° a 8° ano)">Ensino Fundamental Incompleto (6° a 8° ano)
@@ -138,8 +145,9 @@
                   <select type="number" id="Celular"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4  bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="DDD" v-model="DDD">
-                    <option value="27">27</option>
-                    <option value="027">027</option>
+                    <option :value="''">--</option>
+                    <option v-for="c in dddsBrasileiros" :value="c">{{ c }}</option>
+
                   </select>
                 </div>
               </div>
@@ -156,6 +164,7 @@
 
 
             <div class="w-full">
+              <p>Telefone:</p>
               <div class=" relative ">
                 <input v-model="TELEFONE" type="number" id="Telefone"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -164,6 +173,7 @@
             </div>
 
             <div class="w-full">
+              <p>Email:</p>
               <div class=" relative ">
                 <input v-model="EMAIL" type="email" id="email"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -174,14 +184,16 @@
             <!-- Endereços de residencia -->
             <div class="flex items-end">
               <div class="w-[80%] ">
+                <p>CEP:</p>
                 <div class=" relative ">
-                  <input v-model="CEP" type="text" id="cep" maxlength="8"
+                  <input v-model="CEP" type="text" id="cep" maxlength="9" @input="onInputCEPchange()"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="CEP" />
                 </div>
               </div>
               <div class="ml-3">
-                <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank" ref="nofollow" class="text-sm underline">Não sei meu CEP</a>
+                <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank" ref="nofollow"
+                  class="text-sm underline">Não sei meu CEP</a>
               </div>
             </div>
 
@@ -189,6 +201,7 @@
             <div class="flex w-full mb-2">
 
               <div class="w-full mr-2">
+                <p>Rua:</p>
                 <div class=" relative ">
                   <input v-model="RUA" type="text" id="rua"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -197,6 +210,7 @@
               </div>
 
               <div class="w-full">
+                <p>Numero:</p>
                 <div class=" relative ">
                   <input v-model="NUMERO" type="number" id="numero"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -209,6 +223,7 @@
 
 
             <div class="w-full">
+              <p>Complemento:</p>
               <div class=" relative ">
                 <input v-model="COMPLEMENTO" type="text" id="complemento"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -217,6 +232,7 @@
             </div>
 
             <div class="w-full">
+              <p>Bairro:</p>
               <div class=" relative ">
                 <input v-model="BAIRRO" type="text" id="bairro"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -225,6 +241,7 @@
             </div>
 
             <div class="w-full">
+              <p>Cidade:</p>
               <div class=" relative ">
                 <input v-model="CIDADE" type="text" id="cidade"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -233,6 +250,7 @@
             </div>
 
             <div class="w-full">
+              <p>Estado:</p>
               <div class=" relative ">
                 <input v-model="ESTADO" type="text" id="estado"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -270,25 +288,37 @@ import validar from '../components/Modules/validarCelular'
 import cep from 'cep-promise'
 
 
-const DIA = ref(0)
+const DIA = ref('')
 const CPF = ref()
 const RG = ref()
 const NOME = ref()
-const UF_RG = ref()
+const UF_RG = ref('')
 const Data_de_Nascimento = ref()
-const SEXO = ref()
-const ESCOLARIDADE = ref()
-const DDD = ref()
+const SEXO = ref('')
+const ESCOLARIDADE = ref('')
+const DDD = ref('')
 const CELULAR = ref()
 const TELEFONE = ref()
 const EMAIL = ref()
 const CEP = ref()
 const RUA = ref()
 const NUMERO = ref()
-const COMPLEMENTO = ref('')
+const COMPLEMENTO = ref()
 const BAIRRO = ref()
 const CIDADE = ref()
 const ESTADO = ref()
+
+const estadosBrasileiros = ref([
+  'ES', 'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
+])
+
+const dddsBrasileiros = ref([
+  '27', '82', '96', '92', '71', '85', '61', '27', '62', '98', '65', '67', '31', '91', '83', '41', '81', '86', '21', '84', '51', '69', '95', '48', '11', '79', '63'
+])
+
+
+
+
 
 
 let diaBom = ref('')
@@ -319,7 +349,7 @@ watch(DIA, () => dia(DIA.value))
 
 
 watch(CEP, () => {
-  if (CEP.value.length == 8) cep(CEP.value).then((response) => {
+  if (CEP.value.length == 9 && CPF.value[5] != '-' || CPF.value.length == 10 && CPF.value[5] === '-') cep(CEP.value.replace(/[\s._-]+/g, '')).then((response) => {
 
 
     if (!response.cep) {
@@ -337,6 +367,7 @@ watch(CEP, () => {
 
   }).catch(() => {
     alert('Digite um CEP válido')
+
   })
 
 
@@ -362,18 +393,34 @@ const enviarDados = () => {
       alert("Digite um numero de celular válido")
     } else if (!DIA.value) {
       alert("Escolha um dia de vencimento da fatura")
-    } else if (parseInt(Data_de_Nascimento.value) - new Date().getFullYear() < 18) {
-      alert("Você precisa ser maior de idade para se cadastrar.")
+    } else if (Data_de_Nascimento.value.length < 8) {
+
+      if (parseInt(Data_de_Nascimento.value)) {
+        if (parseInt(Data_de_Nascimento.value) < 1011010 || parseInt(Data_de_Nascimento.value) < 11010) {
+          alert("Data de nacimento inválida! Digite a data corretamente.")
+        } else if (parseInt(Data_de_Nascimento.value > 1012060 || parseInt(Data_de_Nascimento.value > 9302060))) {
+          alert("Data de nacimento inválida! Digite a data corretamente.")
+        }
+      } else {
+        alert("Data de nacimento inválida! Digite a data corretamente.")
+      }
+
+
     }
     else {
 
 
       try {
-        const DATA = new BuilderClass(DIA.value, CPF.value.replace(/[\s._-]+/g, ''), RG.value, NOME.value, Data_de_Nascimento.value, SEXO.value,
-          ESCOLARIDADE.value, DDD.value, CELULAR.value.replace(/[\s._-]+/g, ''), TELEFONE.value, EMAIL.value, CEP.value, RUA.value, NUMERO.value, COMPLEMENTO.value,
+        const DATA = new BuilderClass(DIA.value, CPF.value.replace(/[\s._-]+/g, ''),
+          RG.value, NOME.value,
+          Data_de_Nascimento.value, SEXO.value,
+          ESCOLARIDADE.value, DDD.value, CELULAR.value.replace(/[\s._-]+/g, ''),
+          TELEFONE.value, EMAIL.value, CEP.value, RUA.value,
+          NUMERO.value,
+          COMPLEMENTO.value,
           BAIRRO.value, CIDADE.value, ESTADO.value, UF_RG.value)
 
-
+        console.log(DIA.value)
         cartao.enviarCartaoApi(DATA, router)
       } catch (err) {
         console.log(err)
@@ -395,6 +442,65 @@ onMounted(() => {
     }
   });
 });
+
+
+
+function onInputDataChange() {
+  Data_de_Nascimento.value = Data_de_Nascimento.value.replace(/[^\d]/g, '')
+}
+
+//MASCARA DE CPF
+let count
+
+const CpfMask = () => {
+
+  if (CPF.value) {
+
+    if (CPF.value.length == 3 || CPF.value.length == 7) {
+      CPF.value += '.'
+    } else if (CPF.value.length == 11) {
+      CPF.value = CPF.value + '-'
+
+    }
+
+  }
+
+
+
+
+}
+
+function onInputCPFChange() {
+
+  CPF.value = CPF.value.replace(/[^\d.-]/g, '')
+}
+
+watch(CPF, CpfMask)
+
+
+
+
+//MASCARA DE CEP
+function onInputCEPchange() {
+
+
+   if(CEP.value) CEP.value = CEP.value.replace(/[^\d-]/g, '')
+
+    
+  }
+
+
+
+const CepMask = () => {
+
+  if(CEP.value.length == 5) CEP.value += '-' 
+} 
+
+
+watch(CEP,CepMask )
+
+
+
 
 
 </script>
