@@ -321,6 +321,7 @@ import validate from '../components/Modules/validarCpf'
 import validar from '../components/Modules/validarCelular'
 
 import cep from 'cep-promise'
+import store from '@/store';
 
 
 const DIA = ref('')
@@ -515,6 +516,7 @@ const enviarDados = () => {
           BAIRRO.value, CIDADE.value, ESTADO.value, UF_RG.value)
 
         console.log(DIA.value)
+        store.commit('setUserCPF', DATA)
         cartao.enviarCartaoApi(DATA, router)
       } catch (err) {
         console.log(err)
