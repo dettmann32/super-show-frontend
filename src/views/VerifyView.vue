@@ -89,10 +89,13 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios'
 import CardErr from '../components/Modules/cardERR'
 import NavBar from '@/components/NavBar.vue';
+import {useStore} from 'vuex'
+
+const store = useStore()
 
 const code = ref()
 
-const data = ref({ code: null })
+const data = ref({ code: null, CPF:store.state.UserCpf })
 
 let translate = ref(10000)
 
@@ -109,13 +112,13 @@ const formContainer = ref(null);
 
 
 async function enviarCodigo() {
-    data.code = code.value
-    if (data.code === null | data.code == undefined) {
+    data.value.code = code.value
+    if (data.value.code == null || data.value.code == undefined) {
         //implementar sistema de cards
 
-        console.log('Algo deu errado, preencha o campo obrigatorio')
+        alert('Algo deu errado, preencha o campo obrigatorio')
     } else {
-        await axios.post('http://192.168.0.181:3333/autenticateUser', data).then((res) => {
+        await axios.post('http://192.168.0.181:3333/createCadastroVerify', data.value).then((res) => {
 
 
 

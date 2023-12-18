@@ -4,7 +4,7 @@
     style="background-image: url('https://dettmann32.github.io/imagens-for-supershow-web-site/imagens/Cartao.jpg');">
 
 
-    <div class="bg-gray-300 rounded-lg shadow sm:max-w-3xl sm:w-full  sm:overflow-hidden  my-10">
+    <div class="bg-gray-300 rounded-lg shadow w-full sm:max-w-5xl sm:w-full  sm:overflow-hidden  my-10">
       <div class="px-4 py-8 sm:px-10">
         <div class="relative mt-6">
           <div class="absolute inset-0 flex items-center">
@@ -12,7 +12,7 @@
             </div>
           </div>
           <div class="relative flex justify-center text-sm leading-5">
-            <span>
+            <span class="text-lg">
               Preencha suas informações
             </span>
           </div>
@@ -59,7 +59,7 @@
 
 
               <div class="w-full mr-2">
-                RG:
+                <p>RG:</p>
                 <div class=" relative ">
                   <input v-model="RG" type="number" id="rg"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -69,7 +69,7 @@
 
 
               <div class="w-full">
-                UF_RG:
+                <p>UF_RG:</p>
                 <div class=" relative ">
                   <select v-model="UF_RG" type="text" id="UF_RG"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -86,7 +86,7 @@
             </div>
 
             <div class="w-full mb-2 ">
-              <span>Data de Nascimento:</span>
+              <p>Data de Nascimento:</p>
 
               <div class="flex items-center space-x-1 w-full">
 
@@ -133,7 +133,7 @@
                 </div>
 
                 <div class="w-full">
-                  Sexo:
+                  <p> Sexo:</p>
                   <div class=" relative ">
                     <select v-model="SEXO" type="text" id="Sexo"
                       class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -150,7 +150,7 @@
 
 
             <div class="w-full">
-              Escolaridade:
+              <p> Escolaridade: </p>
               <div class=" relative ">
                 <select v-model="ESCOLARIDADE" type="text" id="Escolaridade"
                   class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -175,7 +175,7 @@
             <div class="flex w-full mb-2">
 
               <div class="w-24 mr-2">
-                DDD:
+                <p>DDD:</p>
                 <div class=" relative ">
                   <select type="number" id="Celular"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4  bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -188,7 +188,7 @@
               </div>
 
               <div class="w-full">
-                Celular:
+                <p>Celular:</p>
                 <div class=" relative ">
                   <input v-model="CELULAR" type="text" id="Celular" maxlength="9"
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-800 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -299,7 +299,7 @@
           <div class="mt-5">
             <span class="block w-full rounded-md shadow-sm">
               <button @click.prevent="enviarDados" ref="formContainer" type="button"
-                class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                class="py-2 px-4  text-4xl bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center  font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                 Enviar
               </button>
             </span>
@@ -321,6 +321,9 @@ import validate from '../components/Modules/validarCpf'
 import validar from '../components/Modules/validarCelular'
 
 import cep from 'cep-promise'
+import { useStore } from 'vuex';
+
+const store = useStore()
 
 
 const DIA = ref('')
@@ -452,7 +455,7 @@ watch(CEP, () => {
   if (CEP.value.length === 9 && CPF && CPF.value && CPF.value[5] !== '-') {
     cep(CEP.value.replace(/[\s._-]+/g, '')).then((response) => {
       if (!response.cep) {
-          console.log('sem resposta')
+        console.log('sem resposta')
       } else {
 
         if (response.city) CIDADE.value = response.city
@@ -503,7 +506,7 @@ const enviarDados = () => {
     }
     else {
       Data_de_Nascimento.value = Dia.value + Mes.value + Ano.value
-      console.log(Data_de_Nascimento.value)
+
       try {
         const DATA = new BuilderClass(DIA.value, CPF.value.replace(/[\s._-]+/g, ''),
           RG.value, NOME.value,
@@ -514,7 +517,7 @@ const enviarDados = () => {
           COMPLEMENTO.value,
           BAIRRO.value, CIDADE.value, ESTADO.value, UF_RG.value)
 
-        console.log(DIA.value)
+        store.commit('setUserCPF', DATA.CPF)
         cartao.enviarCartaoApi(DATA, router)
       } catch (err) {
         console.log(err)
@@ -612,4 +615,12 @@ function onInputCEPchange() {
 
 
 </script>
-<style scoped></style>
+<style scoped>
+p {
+  @apply text-xl sm:text-3xl
+}
+
+option {
+  @apply text-lg sm:text-xl
+}
+</style>

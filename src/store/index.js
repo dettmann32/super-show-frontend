@@ -7,7 +7,9 @@ export default createStore({
         email:''
     },
 
-    UserData:{}
+    UserData:{},
+
+    UserCpf:{}
  },
  getters: {
   
@@ -21,6 +23,10 @@ export default createStore({
 
     setUserData(state, data){
       state.UserData = data
+    },
+
+    setUserCPF(state, data){
+      state.UserCpf = data
     }
  },
  actions: {
