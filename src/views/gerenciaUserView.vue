@@ -366,10 +366,10 @@
                                                 <option :value="''">Mensagem para uso do adm:</option>
                                                 <option value="Auxensia de informações">Auxensia de Informações</option>
                                                 <option value="Dados incopativeis">Dados incopativeis</option>
-                                                <option value="Auxensia de dados">Endereço invalido</option>
-                                                <option value="Auxensia de dados">RG Invalido</option>
-                                                <option value="Auxensia de dados">CPF Invalido</option>
-                                                <option value="Auxensia de dados">Numero de celular invalido</option>
+                                                <option value="Endereço invalido">Endereço invalido</option>
+                                                <option value="RG Invalido">RG Invalido</option>
+                                                <option value="CPF Invalido">CPF Invalido</option>
+                                                <option value="Numero de celular invalido">Numero de celular invalido</option>
                                                 <option value="Nome sujo">Nome sujo</option>
 
 
@@ -437,13 +437,15 @@
                                             </span>
 
                                             <select name="" id="" v-model="motivoAdm"
+                                            
                                                 class="rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparen">
+                                                <option :value="''">Mensagem para uso do adm:</option>
                                                 <option value="Auxensia de informações">Auxensia de Informações</option>
                                                 <option value="Dados incopativeis">Dados incopativeis</option>
-                                                <option value="Auxensia de dados">Endereço invalido</option>
-                                                <option value="Auxensia de dados">RG Invalido</option>
-                                                <option value="Auxensia de dados">CPF Invalido</option>
-                                                <option value="Auxensia de dados">Numero de celular invalido</option>
+                                                <option value="Endereço invalido">Endereço invalido</option>
+                                                <option value="RG Invalido">RG Invalido</option>
+                                                <option value="CPF Invalido">CPF Invalido</option>
+                                                <option value="Numero de celular invalido">Numero de celular invalido</option>
 
                                             </select>
                                         </div>

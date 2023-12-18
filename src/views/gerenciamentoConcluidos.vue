@@ -1,8 +1,6 @@
 <template>
     <div class="min-h-[50vh]">
 
-
-
         <div>
             <nav class="bg-gray-800  shadow py-4  justify-between">
                 <div class="px-8 mx-auto max-w-7xl justify-between">
