@@ -305,7 +305,7 @@
 
                         </div>
 
-                        <div >
+                        <div>
 
                             <button @click.prevent="Message(c)"
                                 class=" py-2 px-4 flex transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none">
@@ -345,9 +345,39 @@
 
 
 
+
+                                        </div>
+
+
+                                        <div class="flex relative mt-2">
+                                            <span
+                                                class="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                                                <img src="../assets/ferramenta-de-reparacao.png" alt="engrenagens"
+                                                    class="w-[16px] h-[16px]">
+
+                                            </span>
+
+
+                                            <select type="text" id="sign-in-email" v-model="motivoAdm"
+                                                class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                                placeholder="Mensagem para uso de adm">
+
+
+                                                <option :value="''">Mensagem para uso do adm:</option>
+                                                <option value="Auxensia de informações">Auxensia de Informações</option>
+                                                <option value="Dados incopativeis">Dados incopativeis</option>
+                                                <option value="Auxensia de dados">Endereço invalido</option>
+                                                <option value="Auxensia de dados">RG Invalido</option>
+                                                <option value="Auxensia de dados">CPF Invalido</option>
+                                                <option value="Auxensia de dados">Numero de celular invalido</option>
+                                                <option value="Nome sujo">Nome sujo</option>
+
+
+                                            </select>
+
                                         </div>
                                     </div>
-
+                                    <p class="text-center">OU</p>
                                     <div class="flex flex-col mb-2">
                                         <div class="flex relative ">
                                             <span
@@ -401,13 +431,19 @@
                                         <div class="flex relative ">
                                             <span
                                                 class="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
-                                                <img src="../assets/sinal-de-seta-para-baixo-para-navegar.png" alt="engrenagens"
-                                                    class="w-[16px] h-[16px]">
+                                                <img src="../assets/sinal-de-seta-para-baixo-para-navegar.png"
+                                                    alt="engrenagens" class="w-[16px] h-[16px]">
 
                                             </span>
 
-                                            <select name="" id=""  v-model="motivoAdm" class="rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparen">
-                                                <option value="Auxensia de dados">Auxensia de Dados</option>
+                                            <select name="" id="" v-model="motivoAdm"
+                                                class="rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparen">
+                                                <option value="Auxensia de informações">Auxensia de Informações</option>
+                                                <option value="Dados incopativeis">Dados incopativeis</option>
+                                                <option value="Auxensia de dados">Endereço invalido</option>
+                                                <option value="Auxensia de dados">RG Invalido</option>
+                                                <option value="Auxensia de dados">CPF Invalido</option>
+                                                <option value="Auxensia de dados">Numero de celular invalido</option>
 
                                             </select>
                                         </div>
@@ -467,7 +503,7 @@ import { useRouter } from 'vue-router';
 
 
 const motivo = ref()
-const motivoAdm = ref()
+const motivoAdm = ref('')
 const translate = ref(0)
 
 const translatePendente = ref(0)
@@ -515,11 +551,11 @@ fetchData()
 function ConcluirCadastro(c) {
     try {
 
-        
+
         concluirCadastro.Concluir(c)
 
 
-        alert("Cadastro concluido com sucesso")        
+        alert("Cadastro concluido com sucesso")
 
 
 
@@ -549,14 +585,17 @@ function CancelarPendencia() {
 }
 
 async function SuspenderCadastro(c) {
-    const data = {data:c} 
+
+   
+
+    const data = { data: c }
 
     data.data.MOTIVO = motivoAdm.value
 
     await axios.post(`http://192.168.0.181:3333/adm/Pendentes`, data, config)
 
-    translatePendente.value = 0 
-
+    translatePendente.value = 0
+    
 
 }
 

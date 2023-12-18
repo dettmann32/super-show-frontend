@@ -197,3 +197,17 @@ function sendData(c) {
 
 
 </script>
+
+
+<style scoped>
+
+    th{
+        @apply text-3xl
+    }
+
+    td{
+        @apply text-2xl
+    }
+    
+
+</style>
