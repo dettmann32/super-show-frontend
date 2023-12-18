@@ -17,7 +17,7 @@
 
 
 <script setup>  
-import NavBar from './components/NavBar.vue';
+
 import FooterCompo from './components/FooterCompo.vue';
 </script>
 

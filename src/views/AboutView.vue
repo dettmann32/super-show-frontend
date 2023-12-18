@@ -617,7 +617,7 @@ function onInputCEPchange() {
 </script>
 <style scoped>
 p {
-  @apply text-xl sm:text-3xl
+  @apply text-xl sm:text-2xl
 }
 
 option {
