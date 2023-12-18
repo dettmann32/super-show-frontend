@@ -6,7 +6,7 @@
 
 
         <div>
-            <nav class="bg-gray-800  shadow py-4 ">
+            <nav class="bg-gray-800 shadow py-4">
                 <div class="px-8 mx-auto max-w-7xl">
                     <div class="flex items-center justify-between h-16">
                         <div class=" flex items-center">
@@ -21,7 +21,7 @@
                                         Solicitados
                                     </router-link>
                                     <router-link
-                                        class="text-gray-300  dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                                        class="text-gray-300 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
                                         to="/Rejeitados">
                                         Recusados
                                     </router-link>
